@@ -96,23 +96,31 @@ const Hero = () => {
             {/* Text Content - Left Side */}
             <div className="lg:w-1/2 text-white">
               <h2 className="text-4xl lg:text-5xl font-bold mb-6">
-                Laporan Kegiatan KKN
+                KKN Sisdamas
               </h2>
               <p className="text-lg lg:text-xl mb-8 leading-relaxed">
-                Kuliah Kerja Nyata (KKN) adalah bentuk pengabdian mahasiswa
-                kepada masyarakat yang dilaksanakan di daerah pedesaan selama 1
-                bulan penuh. Berikut laporan lengkap kegiatan kami di Desa
-                Mandiri.
+                KKN Sisdamas adalah singkatan dari Kuliah Kerja Nyata Sistem
+                Desa Mandiri dan Sejahtera. Ini adalah model pengabdian kepada
+                masyarakat yang dikembangkan oleh UIN Sunan Gunung Djati
+                Bandung. KKN Sisdamas melibatkan mahasiswa dalam pemberdayaan
+                masyarakat desa melalui berbagai kegiatan, dengan tujuan
+                mewujudkan desa yang mandiri dan sejahtera.
               </p>
 
               {/* Buttons */}
               <div className="flex flex-col sm:flex-row gap-4">
-                <button className="bg-green-600 hover:bg-green-700 text-white px-8 py-3 rounded-lg font-semibold transition-colors duration-300">
+                <a
+                  href="#programs"
+                  className="bg-green-600 hover:bg-green-700 text-white px-8 py-3 rounded-lg font-semibold transition-colors duration-300"
+                >
                   Lihat Program
-                </button>
-                <button className="bg-transparent border-2 border-white text-white hover:bg-white hover:text-green-600 px-8 py-3 rounded-lg font-semibold transition-all duration-300">
+                </a>
+                <a
+                  href="#gallery"
+                  className="bg-transparent border-2 border-white text-white hover:bg-white hover:text-green-600 px-8 py-3 rounded-lg font-semibold transition-all duration-300"
+                >
                   Galeri Foto
-                </button>
+                </a>
               </div>
             </div>
 

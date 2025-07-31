@@ -41,11 +41,11 @@ const ProfileDesa = () => {
       <div className="container mx-auto px-4">
         <div className="text-center mb-12">
           <h2 className="text-3xl font-bold text-gray-800 mb-2">
-            Profil Desa Mandiri
+            Profil Desa Kandangmukti
           </h2>
           <hr className="w-24 mx-auto my-4 border-t-2 border-green-600" />
           <p className="text-gray-600 max-w-2xl mx-auto">
-            Desa Mandiri terletak di Kecamatan Maju Jaya, Kabupaten Sejahtera
+            Desa Kandangmukti terletak di Kecamatan Leles, Kabupaten Garut
             dengan potensi pertanian dan UMKM yang berkembang pesat.
           </p>
         </div>

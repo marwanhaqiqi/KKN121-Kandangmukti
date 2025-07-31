@@ -20,7 +20,7 @@ const Header = () => {
                 LAPORAN KKN SISDAMAS
               </h1>
               <p className="text-blue-100 text-sm">
-                Kelompok 121 - Desa KandangMukti
+                Kelompok 121 - Desa Kandangmukti
               </p>
             </div>
           </div>
@@ -62,6 +62,12 @@ const Header = () => {
             >
               Galeri
             </a>
+            <a href="#pdf" className="px-3 py-2 rounded hover:text-gray-300">
+              Laporan PDF
+            </a>
+            <a href="#footer" className="px-3 py-2 rounded hover:text-gray-300">
+              Contact
+            </a>
           </nav>
         </div>
 
@@ -71,32 +77,51 @@ const Header = () => {
             <a
               href="#home"
               className="block px-2 py-1 text-white hover:text-gray-300"
+              onClick={() => setIsOpen(false)}
             >
               Beranda
             </a>
             <a
               href="#profile"
               className="block px-2 py-1 text-white hover:text-gray-300"
+              onClick={() => setIsOpen(false)}
             >
               Profil Desa
             </a>
             <a
               href="#programs"
               className="block px-2 py-1 text-white hover:text-gray-300"
+              onClick={() => setIsOpen(false)}
             >
               Program
             </a>
             <a
               href="#team"
               className="block px-2 py-1 text-white hover:text-gray-300"
+              onClick={() => setIsOpen(false)}
             >
               Tim
             </a>
             <a
               href="#gallery"
               className="block px-2 py-1 text-white hover:text-gray-300"
+              onClick={() => setIsOpen(false)}
             >
               Galeri
+            </a>
+            <a
+              href="#pdf"
+              className="block px-2 py-1 text-white hover:text-gray-300"
+              onClick={() => setIsOpen(false)}
+            >
+              Laporan PDF
+            </a>
+            <a
+              href="#footer"
+              className="block px-2 py-1 text-white hover:text-gray-300"
+              onClick={() => setIsOpen(false)}
+            >
+              Contact
             </a>
           </div>
         )}

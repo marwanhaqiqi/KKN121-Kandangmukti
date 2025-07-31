@@ -11,7 +11,7 @@ const BackToTop = ({ show }) => {
   return (
     <button
       onClick={scrollToTop}
-      className={`fixed bottom-8 right-8 bg-blue-600 text-white p-3 rounded-full shadow-lg hover:bg-blue-700 transition duration-300 ${
+      className={`fixed bottom-8 right-8 bg-green-600 text-white p-3 rounded-full shadow-lg hover:bg-green-700 transition duration-300 ${
         show ? "block" : "hidden"
       }`}
     >

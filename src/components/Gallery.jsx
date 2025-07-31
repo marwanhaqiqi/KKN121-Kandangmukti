@@ -1,11 +1,14 @@
-const GalleryItem = ({ day, title, image, alt, description }) => (
+import { useState, useEffect } from "react";
+import { ChevronLeft, ChevronRight, Play, Pause } from "lucide-react";
+
+const GalleryItem = ({ title, image, alt, description }) => (
   <div className="bg-gray-50 rounded-lg overflow-hidden shadow-md">
     <div className="md:flex">
       <div className="md:w-1/3">
         <img src={image} alt={alt} className="w-full h-64 object-cover" />
       </div>
       <div className="p-6 md:w-2/3">
-        <h3 className="text-xl font-semibold mb-2">{title}</h3>
+        <h4 className="text-lg font-semibold mb-2">{title}</h4>
         <p className="text-gray-600">{description}</p>
       </div>
     </div>
@@ -13,35 +16,138 @@ const GalleryItem = ({ day, title, image, alt, description }) => (
 );
 
 const Gallery = () => {
+  const [currentIndex1, setCurrentIndex1] = useState(0);
+  // const [currentIndex2, setCurrentIndex2] = useState(0);
+  const [isPlaying1, setIsPlaying1] = useState(true);
+  // const [isPlaying2, setIsPlaying2] = useState(true);
+
   const galleryItems = [
     {
-      day: 1,
-      title: "Hari 1: Pembukaan KKN",
-      image:
-        "https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/80c6b9af-6b9e-4438-8410-8e410b119e61.png",
-      alt: "Kegiatan hari pertama KKN: Pembukaan dan perkenalan dengan perangkat desa",
+      title: "Kunjungan",
+      image: "./Day1/1.jpg",
+      alt: "Kegiatan perkenalan dengan perangkat desa",
       description:
-        "Perkenalan dengan perangkat desa dan survey lokasi kegiatan. Diskusi awal mengenai rencana program kerja yang akan dilaksanakan selama KKN.",
+        "Sebagai bentuk awal pelaksanaan program KKN SISDAMAS 121 di Desa Kandang Mukti, mahasiswa melaksanakan kunjungan dan silaturahmi kepada Bapak Kepala Desa beserta jajaran perangkat desa.",
     },
     {
-      day: 2,
-      title: "Hari 2: Survey Lapangan",
-      image:
-        "https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/4532f195-4360-40db-bb62-222e8aa614cb.png",
-      alt: "Kegiatan hari kedua KKN: Survey lingkungan dan kebutuhan warga",
+      title: "Observasi",
+      image: "./Day1/2.jpg",
+      alt: "Survey ke rumah-rumah warga",
       description:
-        "Melakukan survey ke rumah-rumah warga untuk mengetahui kondisi dan kebutuhan masyarakat desa secara lebih mendalam.",
+        "Pada kegiatan observasi ini, tim KKN SISDAMAS 121 Desa Kandang Mukti melakukan peninjauan langsung ke lapangan kerja bersama Bapak Kepala Dusun Dua.",
     },
     {
-      day: 3,
-      title: "Hari 3: Perencanaan Program",
-      image:
-        "https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/bdfe3c96-33f5-4fec-9fbc-7fb829293e66.png",
-      alt: "Kegiatan hari ketiga KKN: Persiapan program kerja utama",
+      title: "Penyusunan Program Kerja",
+      image: "./Day1/3.jpg",
+      alt: "Penyusunan program kerja utama",
       description:
-        "Menyusun program kerja utama berdasarkan hasil survey hari sebelumnya dan diskusi dengan perangkat desa.",
+        "Kegiatan pra pembukaan menjadi langkah awal dalam pelaksanaan KKN SISDAMAS 121, 122, dan 123 di Desa Kandang Mukti.",
     },
   ];
+
+  // const galleryItems2 = [
+  //   {
+  //     title: "Kunjungan",
+  //     image: "./Day2/1.png",
+  //     alt: "Kegiatan perkenalan dengan perangkat desa",
+  //     description:
+  //       "Sebagai bentuk awal pelaksanaan program KKN SISDAMAS 121 di Desa Kandang Mukti, mahasiswa melaksanakan kunjungan dan silaturahmi kepada Bapak Kepala Desa beserta jajaran perangkat desa.",
+  //   },
+  //   {
+  //     title: "Observasi",
+  //     image: "./Day2/2.png",
+  //     alt: "Survey ke rumah-rumah warga",
+  //     description:
+  //       "Pada kegiatan observasi ini, tim KKN SISDAMAS 121 Desa Kandang Mukti melakukan peninjauan langsung ke lapangan kerja bersama Bapak Kepala Dusun Dua.",
+  //   },
+  //   {
+  //     title: "Penyusunan Program Kerja",
+  //     image: "./Day2/3.png",
+  //     alt: "Penyusunan program kerja utama",
+  //     description:
+  //       "Kegiatan pra pembukaan menjadi langkah awal dalam pelaksanaan KKN SISDAMAS 121, 122, dan 123 di Desa Kandang Mukti.",
+  //   },
+  // ];
+
+  // Auto-slide Day 1
+  useEffect(() => {
+    if (!isPlaying1) return;
+    const interval = setInterval(() => {
+      setCurrentIndex1((prev) =>
+        prev === galleryItems.length - 1 ? 0 : prev + 1
+      );
+    }, 4000);
+    return () => clearInterval(interval);
+  }, [isPlaying1, galleryItems.length]);
+
+  // Auto-slide Day 2
+  // useEffect(() => {
+  //   if (!isPlaying2) return;
+  //   const interval = setInterval(() => {
+  //     setCurrentIndex2((prev) =>
+  //       prev === galleryItems2.length - 1 ? 0 : prev + 1
+  //     );
+  //   }, 4000);
+  //   return () => clearInterval(interval);
+  // }, [isPlaying2, galleryItems2.length]);
+
+  const renderCarousel = (
+    items,
+    currentIndex,
+    setIndex,
+    isPlaying,
+    togglePlayPause,
+    day
+  ) => (
+    <div className="relative max-w-4xl mx-auto mb-8">
+      <div className="text-center mb-6">
+        <h3 className="text-3xl font-bold text-gray-800 mb-2">{day}</h3>
+        <div className="w-16 h-1 bg-green-600 mx-auto rounded-full"></div>
+      </div>
+
+      <div className="relative overflow-hidden rounded-lg shadow-lg">
+        <div
+          className="flex transition-transform duration-500 ease-in-out"
+          style={{ transform: `translateX(-${currentIndex * 100}%)` }}
+        >
+          {items.map((item, index) => (
+            <div key={index} className="w-full flex-shrink-0">
+              <GalleryItem {...item} />
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <button
+        onClick={() =>
+          setIndex(currentIndex === 0 ? items.length - 1 : currentIndex - 1)
+        }
+        className="absolute left-0 top-1/2 transform -translate-y-1/2 bg-white/40 hover:bg-white rounded-full p-2 shadow-md"
+      >
+        <ChevronLeft className="w-6 h-6 text-gray-600" />
+      </button>
+
+      <button
+        onClick={() =>
+          setIndex(currentIndex === items.length - 1 ? 0 : currentIndex + 1)
+        }
+        className="absolute right-0 top-1/2 transform -translate-y-1/2 bg-white/40 hover:bg-white rounded-full p-2 shadow-md"
+      >
+        <ChevronRight className="w-6 h-6 text-gray-600" />
+      </button>
+
+      <button
+        onClick={togglePlayPause}
+        className="absolute bottom-4 right-4 bg-green-600 hover:bg-green-700 text-white rounded-full p-2 shadow-md"
+      >
+        {isPlaying ? (
+          <Pause className="w-5 h-5" />
+        ) : (
+          <Play className="w-5 h-5" />
+        )}
+      </button>
+    </div>
+  );
 
   return (
     <section id="gallery" className="py-16 bg-white">
@@ -50,27 +156,30 @@ const Gallery = () => {
           <h2 className="text-3xl font-bold text-gray-800 mb-2">
             Galeri Kegiatan Harian
           </h2>
-          <hr className="w-24 mx-auto my-4 border-t-2 border-blue-600" />
+          <hr className="w-24 mx-auto my-4 border-t-2 border-green-600" />
           <p className="text-gray-600 max-w-2xl mx-auto">
             Dokumentasi harian kegiatan KKN dari hari ke-1 sampai hari ke-35 di
-            Desa Mandiri.
+            Desa Kandangmukti.
           </p>
         </div>
 
-        <div className="grid grid-cols-1 gap-8">
-          {galleryItems.map((item, index) => (
-            <GalleryItem key={index} {...item} />
-          ))}
+        {renderCarousel(
+          galleryItems,
+          currentIndex1,
+          setCurrentIndex1,
+          isPlaying1,
+          () => setIsPlaying1(!isPlaying1),
+          "Day 1"
+        )}
 
-          {/* Note for implementation */}
-          <div className="p-4 bg-blue-50 rounded-lg">
-            <p className="text-blue-800">
-              Galeri ini menampilkan contoh template untuk 3 hari pertama.
-              Silakan tambahkan template serupa untuk hari ke-4 sampai ke-35
-              dengan menyesuaikan gambar dan deskripsi kegiatan harian.
-            </p>
-          </div>
-        </div>
+        {/* {renderCarousel(
+          galleryItems2,
+          currentIndex2,
+          setCurrentIndex2,
+          isPlaying2,
+          () => setIsPlaying2(!isPlaying2),
+          "Day 2"
+        )} */}
       </div>
     </section>
   );

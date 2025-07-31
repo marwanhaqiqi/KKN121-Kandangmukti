@@ -1,7 +1,24 @@
-const TeamMemberCard = ({ image, alt, name, role, faculty, major }) => (
+// const TeamMemberCard = ({ image, alt, name, role, faculty, major }) => (
+//   <div className="bg-white rounded-lg shadow-md p-6 text-center hover:transform hover:-translate-y-1 hover:shadow-lg transition-all duration-300">
+//     <div className="w-32 h-32 mx-auto mb-4 overflow-hidden rounded-full border-4 border-green-100">
+//       <img src={image} alt={alt} className="w-full h-full object-cover" />
+//     </div>
+//     <h3 className="text-xl font-semibold mb-1">{name}</h3>
+//     <p className="text-green-600 mb-2">{role}</p>
+//     <p className="text-gray-600 text-sm">{faculty}</p>
+//     <p className="text-gray-600 text-sm">{major}</p>
+//   </div>
+
+const TeamMemberCard = ({ image, alt, name, role, faculty, major, igUrl }) => (
   <div className="bg-white rounded-lg shadow-md p-6 text-center hover:transform hover:-translate-y-1 hover:shadow-lg transition-all duration-300">
     <div className="w-32 h-32 mx-auto mb-4 overflow-hidden rounded-full border-4 border-green-100">
-      <img src={image} alt={alt} className="w-full h-full object-cover" />
+      {igUrl ? (
+        <a href={igUrl} target="_blank" rel="noopener noreferrer">
+          <img src={image} alt={alt} className="w-full h-full object-cover" />
+        </a>
+      ) : (
+        <img src={image} alt={alt} className="w-full h-full object-cover" />
+      )}
     </div>
     <h3 className="text-xl font-semibold mb-1">{name}</h3>
     <p className="text-green-600 mb-2">{role}</p>
@@ -19,6 +36,7 @@ const TimKKN = () => {
       role: "Ketua",
       faculty: "Fakultas Dakwah dan Komunikasi",
       major: "Ilmu Komunikasi Jurnalistik",
+      igUrl: "https://instagram.com/palahswnd",
     },
     {
       image: "./Profile/14.png",
@@ -27,6 +45,7 @@ const TimKKN = () => {
       role: "Bendahara",
       faculty: "Fakultas Ekonomi dan Bisnis Islam",
       major: "Manajemen",
+      igUrl: "https://instagram.com/salmasyfad",
     },
     {
       image: "./Profile/13.png",
@@ -35,6 +54,7 @@ const TimKKN = () => {
       role: "Sekretaris",
       faculty: "Fakultas Ilmu Sosial dan Ilmu Politik",
       major: "Administrasi Publik",
+      igUrl: "https://instagram.com/wildatsalisaa__",
     },
     {
       image: "./Profile/4.png",
@@ -43,6 +63,7 @@ const TimKKN = () => {
       role: "Acara",
       faculty: "Fakultas Tarbiyah dan Keguruan",
       major: "Pendidikan Agama Islam",
+      igUrl: "https://instagram.com/inabilwetrust",
     },
     {
       image: "./Profile/3.png",
@@ -51,6 +72,7 @@ const TimKKN = () => {
       role: "Acara",
       faculty: "Fakultas Ushuluddin",
       major: "Ilmu Hadist",
+      igUrl: "https://instagram.com/saffaulya",
     },
     {
       image: "./Profile/2.png",
@@ -59,6 +81,7 @@ const TimKKN = () => {
       role: "Acara",
       faculty: "Fakultas Tarbiyah dan Keguruan",
       major: "Tadris Bahasa Indonesia",
+      igUrl: "https://instagram.com/rayazki",
     },
     {
       image: "./Profile/1.png",
@@ -67,6 +90,7 @@ const TimKKN = () => {
       role: "Acara",
       faculty: "Fakultas Syari'ah dan Hukum",
       major: "Perbandingan Madzhab dan Hukum",
+      igUrl: "https://instagram.com/abdichullo",
     },
     {
       image: "./Profile/12.png",
@@ -75,6 +99,7 @@ const TimKKN = () => {
       role: "Mobile Support",
       faculty: "Fakultas Sains dan Teknologi",
       major: "Teknik Informatika",
+      igUrl: "https://instagram.com/marwansyah_003",
     },
     {
       image: "./Profile/11.png",
@@ -83,14 +108,7 @@ const TimKKN = () => {
       role: "Mobile Support",
       faculty: "Fakultas Ushuluddin",
       major: "Studi Agama-Agama",
-    },
-    {
-      image: "./Profile/10.png",
-      alt: "Foto anggota tim KKN dengan nama Yulia Nurjanah",
-      name: "Yulia Nurjanah",
-      role: "Publikasi dan Dokumentasi",
-      faculty: "Fakultas Dakwah dan Komunikasi",
-      major: "Bimbingan Konseling Islam",
+      igUrl: "https://instagram.com/aakhdan_rvw",
     },
     {
       image: "./Profile/9.png",
@@ -99,6 +117,16 @@ const TimKKN = () => {
       role: "Publikasi dan Dokumentasi",
       faculty: "Fakultas Tarbiyah dan Keguruan ",
       major: "Pendidikan Bahasa Inggris",
+      igUrl: "https://instagram.com/simply.naylaa_",
+    },
+    {
+      image: "./Profile/10.png",
+      alt: "Foto anggota tim KKN dengan nama Yulia Nurjanah",
+      name: "Yulia Nurjanah",
+      role: "Publikasi dan Dokumentasi",
+      faculty: "Fakultas Dakwah dan Komunikasi",
+      major: "Bimbingan Konseling Islam",
+      igUrl: "https://instagram.com/yuliathetic",
     },
     {
       image: "./Profile/8.png",
@@ -107,6 +135,7 @@ const TimKKN = () => {
       role: "Publikasi dan Dokumentasi",
       faculty: "Fakultas Ekonomi dan Bisnis Islam",
       major: "Manajemen Keuangan Syari'ah",
+      igUrl: "https://instagram.com/kylarsd",
     },
     {
       image: "./Profile/7.png",
@@ -115,6 +144,7 @@ const TimKKN = () => {
       role: "Logistik Konsumsi",
       faculty: "Fakultas Adab dan Humaniora",
       major: "Sejarah Peradaban Islam",
+      igUrl: "https://instagram.com/naufalanggr__",
     },
     {
       image: "./Profile/6.png",
@@ -123,6 +153,7 @@ const TimKKN = () => {
       role: "Logistik Konsumsi",
       faculty: "Fakultas Tarbiyah dan Keguruan",
       major: "Pendidikan Kimia",
+      igUrl: "https://instagram.com/miaaasalastri",
     },
     {
       image: "./Profile/5.png",
@@ -131,6 +162,7 @@ const TimKKN = () => {
       role: "Logistik Konsumsi",
       faculty: "Fakultas Adab dan Humaniora",
       major: "Sastra Inggris",
+      igUrl: "https://instagram.com/zaleahra",
     },
   ];
 
@@ -139,12 +171,12 @@ const TimKKN = () => {
       <div className="container mx-auto px-4">
         <div className="text-center mb-12">
           <h2 className="text-3xl font-bold text-gray-800 mb-2">
-            Tim KKN Desa Mandiri
+            Tim KKN Desa Kandangmukti
           </h2>
           <hr className="w-24 mx-auto my-4 border-t-2 border-green-600" />
           <p className="text-gray-600 max-w-2xl mx-auto">
             Berikut adalah anggota tim KKN yang telah berkontribusi dalam
-            pelaksanaan program di Desa Mandiri.
+            pelaksanaan program di Desa Kandangmukti.
           </p>
         </div>
 
