@@ -77,7 +77,7 @@ const TimKKN = () => {
     {
       image: "./Profile/2.png",
       alt: "Foto anggota tim KKN dengan nama Zahra Katlya Isfarayani",
-      name: "Zahra Katlya Isfarani",
+      name: "Zahra Katlya Isfarayani",
       role: "Acara",
       faculty: "Fakultas Tarbiyah dan Keguruan",
       major: "Tadris Bahasa Indonesia",
