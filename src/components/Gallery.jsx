@@ -37,7 +37,7 @@ const Gallery = () => {
         "Pada kegiatan observasi ini, tim KKN SISDAMAS 121 Desa Kandang Mukti melakukan peninjauan langsung ke lapangan kerja bersama Bapak Kepala Dusun Dua.",
     },
     {
-      title: "Penyusunan Program Kerja",
+      title: "Pra Pembukaan",
       image: "./Day1/3.jpg",
       alt: "Penyusunan program kerja utama",
       description:

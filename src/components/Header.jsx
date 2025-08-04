@@ -56,10 +56,13 @@ const Header = () => {
             <a href="#team" className="px-3 py-2 rounded hover:text-gray-300">
               Tim
             </a>
-            <a
-              href="#gallery"
+            {/* <a
+              href="#testimoni"
               className="px-3 py-2 rounded hover:text-gray-300"
             >
+              Testimoni Warga
+            </a> */}
+            <a href="#galery" className="px-3 py-2 rounded hover:text-gray-300">
               Galeri
             </a>
             <a href="#pdf" className="px-3 py-2 rounded hover:text-gray-300">
@@ -102,6 +105,13 @@ const Header = () => {
             >
               Tim
             </a>
+            {/* <a
+              href="#testimoni"
+              className="block px-2 py-1 text-white hover:text-gray-300"
+              onClick={() => setIsOpen(false)}
+            >
+              Testimoni Warga
+            </a> */}
             <a
               href="#gallery"
               className="block px-2 py-1 text-white hover:text-gray-300"

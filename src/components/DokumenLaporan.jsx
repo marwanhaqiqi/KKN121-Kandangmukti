@@ -22,7 +22,7 @@ const DokumenLaporan = () => {
               </div>
               <div className="flex-1">
                 <h3 className="text-xl font-semibold mb-2">
-                  Laporan Lengkap KKN Desa Mandiri
+                  Laporan Lengkap KKN Sisdamas 121 Desa Kandangmukti
                 </h3>
                 <p className="text-gray-600 mb-4">
                   Format: PDF | Ukuran: 2.5 MB

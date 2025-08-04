@@ -4,6 +4,7 @@ import Hero from "./components/Hero";
 import ProfileDesa from "./components/ProfileDesa";
 import ProgramUnggulan from "./components/ProgramUnggulan";
 import TimKKN from "./components/TimKKN";
+// import TestimoniWarga from "./components/TestimoniWarga";
 import Gallery from "./components/Gallery";
 import DokumenLaporan from "./components/DokumenLaporan";
 import Footer from "./components/Footer";
@@ -14,11 +15,7 @@ function App() {
 
   useEffect(() => {
     const handleScroll = () => {
-      if (window.scrollY > 100) {
-        setShowBackToTop(true);
-      } else {
-        setShowBackToTop(false);
-      }
+      setShowBackToTop(window.scrollY > 100);
     };
 
     window.addEventListener("scroll", handleScroll);
@@ -26,12 +23,13 @@ function App() {
   }, []);
 
   return (
-    <div className=" font-sans">
+    <div className="font-sans">
       <Header />
       <Hero />
       <ProfileDesa />
       <ProgramUnggulan />
       <TimKKN />
+      {/* <TestimoniWarga /> */}
       <Gallery />
       <DokumenLaporan />
       <Footer />

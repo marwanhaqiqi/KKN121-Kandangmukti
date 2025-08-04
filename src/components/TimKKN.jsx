@@ -1,15 +1,13 @@
-// const TeamMemberCard = ({ image, alt, name, role, faculty, major }) => (
-//   <div className="bg-white rounded-lg shadow-md p-6 text-center hover:transform hover:-translate-y-1 hover:shadow-lg transition-all duration-300">
-//     <div className="w-32 h-32 mx-auto mb-4 overflow-hidden rounded-full border-4 border-green-100">
-//       <img src={image} alt={alt} className="w-full h-full object-cover" />
-//     </div>
-//     <h3 className="text-xl font-semibold mb-1">{name}</h3>
-//     <p className="text-green-600 mb-2">{role}</p>
-//     <p className="text-gray-600 text-sm">{faculty}</p>
-//     <p className="text-gray-600 text-sm">{major}</p>
-//   </div>
-
-const TeamMemberCard = ({ image, alt, name, role, faculty, major, igUrl }) => (
+const TeamMemberCard = ({
+  image,
+  alt,
+  name,
+  role,
+  faculty,
+  major,
+  igUrl,
+  logbookUrl,
+}) => (
   <div className="bg-white rounded-lg shadow-md p-6 text-center hover:transform hover:-translate-y-1 hover:shadow-lg transition-all duration-300">
     <div className="w-32 h-32 mx-auto mb-4 overflow-hidden rounded-full border-4 border-green-100">
       {igUrl ? (
@@ -24,6 +22,16 @@ const TeamMemberCard = ({ image, alt, name, role, faculty, major, igUrl }) => (
     <p className="text-green-600 mb-2">{role}</p>
     <p className="text-gray-600 text-sm">{faculty}</p>
     <p className="text-gray-600 text-sm">{major}</p>
+    {logbookUrl && (
+      <a
+        href={logbookUrl}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="inline-block mt-3 text-sm text-green-600 hover:underline"
+      >
+        Lihat Logbook
+      </a>
+    )}
   </div>
 );
 
@@ -37,6 +45,7 @@ const TimKKN = () => {
       faculty: "Fakultas Dakwah dan Komunikasi",
       major: "Ilmu Komunikasi Jurnalistik",
       igUrl: "https://instagram.com/palahswnd",
+      logbookUrl: "https://example.com/logbook/palah",
     },
     {
       image: "./Profile/14.png",
@@ -46,6 +55,7 @@ const TimKKN = () => {
       faculty: "Fakultas Ekonomi dan Bisnis Islam",
       major: "Manajemen",
       igUrl: "https://instagram.com/salmasyfad",
+      logbookUrl: "https://example.com/logbook/salma",
     },
     {
       image: "./Profile/13.png",
@@ -55,6 +65,7 @@ const TimKKN = () => {
       faculty: "Fakultas Ilmu Sosial dan Ilmu Politik",
       major: "Administrasi Publik",
       igUrl: "https://instagram.com/wildatsalisaa__",
+      logbookUrl: "https://example.com/logbook/wilda",
     },
     {
       image: "./Profile/4.png",
@@ -64,6 +75,7 @@ const TimKKN = () => {
       faculty: "Fakultas Tarbiyah dan Keguruan",
       major: "Pendidikan Agama Islam",
       igUrl: "https://instagram.com/inabilwetrust",
+      logbookUrl: "https://example.com/logbook/syhadad",
     },
     {
       image: "./Profile/3.png",
@@ -73,6 +85,7 @@ const TimKKN = () => {
       faculty: "Fakultas Ushuluddin",
       major: "Ilmu Hadist",
       igUrl: "https://instagram.com/saffaulya",
+      logbookUrl: "https://example.com/logbook/saffa",
     },
     {
       image: "./Profile/2.png",
@@ -82,6 +95,7 @@ const TimKKN = () => {
       faculty: "Fakultas Tarbiyah dan Keguruan",
       major: "Tadris Bahasa Indonesia",
       igUrl: "https://instagram.com/rayazki",
+      logbookUrl: "https://example.com/logbook/katlya",
     },
     {
       image: "./Profile/1.png",
@@ -91,6 +105,7 @@ const TimKKN = () => {
       faculty: "Fakultas Syari'ah dan Hukum",
       major: "Perbandingan Madzhab dan Hukum",
       igUrl: "https://instagram.com/abdichullo",
+      logbookUrl: "https://example.com/logbook/abdi",
     },
     {
       image: "./Profile/12.png",
@@ -100,6 +115,7 @@ const TimKKN = () => {
       faculty: "Fakultas Sains dan Teknologi",
       major: "Teknik Informatika",
       igUrl: "https://instagram.com/marwansyah_003",
+      logbookUrl: "https://example.com/logbook/marwan",
     },
     {
       image: "./Profile/11.png",
@@ -109,6 +125,7 @@ const TimKKN = () => {
       faculty: "Fakultas Ushuluddin",
       major: "Studi Agama-Agama",
       igUrl: "https://instagram.com/aakhdan_rvw",
+      logbookUrl: "https://example.com/logbook/akhdan",
     },
     {
       image: "./Profile/9.png",
@@ -118,6 +135,7 @@ const TimKKN = () => {
       faculty: "Fakultas Tarbiyah dan Keguruan ",
       major: "Pendidikan Bahasa Inggris",
       igUrl: "https://instagram.com/simply.naylaa_",
+      logbookUrl: "https://example.com/logbook/naila",
     },
     {
       image: "./Profile/10.png",
@@ -127,6 +145,7 @@ const TimKKN = () => {
       faculty: "Fakultas Dakwah dan Komunikasi",
       major: "Bimbingan Konseling Islam",
       igUrl: "https://instagram.com/yuliathetic",
+      logbookUrl: "https://example.com/logbook/yulia",
     },
     {
       image: "./Profile/8.png",
@@ -136,6 +155,7 @@ const TimKKN = () => {
       faculty: "Fakultas Ekonomi dan Bisnis Islam",
       major: "Manajemen Keuangan Syari'ah",
       igUrl: "https://instagram.com/kylarsd",
+      logbookUrl: "https://example.com/logbook/kyla",
     },
     {
       image: "./Profile/7.png",
@@ -145,6 +165,7 @@ const TimKKN = () => {
       faculty: "Fakultas Adab dan Humaniora",
       major: "Sejarah Peradaban Islam",
       igUrl: "https://instagram.com/naufalanggr__",
+      logbookUrl: "https://example.com/logbook/naufal",
     },
     {
       image: "./Profile/6.png",
@@ -154,6 +175,7 @@ const TimKKN = () => {
       faculty: "Fakultas Tarbiyah dan Keguruan",
       major: "Pendidikan Kimia",
       igUrl: "https://instagram.com/miaaasalastri",
+      logbookUrl: "https://example.com/logbook/mia",
     },
     {
       image: "./Profile/5.png",
@@ -163,6 +185,7 @@ const TimKKN = () => {
       faculty: "Fakultas Adab dan Humaniora",
       major: "Sastra Inggris",
       igUrl: "https://instagram.com/zaleahra",
+      logbookUrl: "https://example.com/logbook/azalea",
     },
   ];
 
