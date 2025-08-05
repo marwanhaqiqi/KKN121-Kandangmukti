@@ -7,7 +7,7 @@ const GalleryItem = ({ title, image, alt, description }) => (
       <div className="md:w-1/3">
         <img src={image} alt={alt} className="w-full h-64 object-cover" />
       </div>
-      <div className="p-6 md:w-2/3">
+      <div className="p-6 md:w-2/3 -mt-3">
         <h4 className="text-lg font-semibold mb-2">{title}</h4>
         <p className="text-gray-600">{description}</p>
       </div>
@@ -17,9 +17,11 @@ const GalleryItem = ({ title, image, alt, description }) => (
 
 const Gallery = () => {
   const [currentIndex1, setCurrentIndex1] = useState(0);
-  // const [currentIndex2, setCurrentIndex2] = useState(0);
+  const [currentIndex2, setCurrentIndex2] = useState(0);
+  const [currentIndex3, setCurrentIndex3] = useState(0);
   const [isPlaying1, setIsPlaying1] = useState(true);
-  // const [isPlaying2, setIsPlaying2] = useState(true);
+  const [isPlaying2, setIsPlaying2] = useState(true);
+  const [isPlaying3, setIsPlaying3] = useState(true);
 
   const galleryItems = [
     {
@@ -45,29 +47,52 @@ const Gallery = () => {
     },
   ];
 
-  // const galleryItems2 = [
-  //   {
-  //     title: "Kunjungan",
-  //     image: "./Day2/1.png",
-  //     alt: "Kegiatan perkenalan dengan perangkat desa",
-  //     description:
-  //       "Sebagai bentuk awal pelaksanaan program KKN SISDAMAS 121 di Desa Kandang Mukti, mahasiswa melaksanakan kunjungan dan silaturahmi kepada Bapak Kepala Desa beserta jajaran perangkat desa.",
-  //   },
-  //   {
-  //     title: "Observasi",
-  //     image: "./Day2/2.png",
-  //     alt: "Survey ke rumah-rumah warga",
-  //     description:
-  //       "Pada kegiatan observasi ini, tim KKN SISDAMAS 121 Desa Kandang Mukti melakukan peninjauan langsung ke lapangan kerja bersama Bapak Kepala Dusun Dua.",
-  //   },
-  //   {
-  //     title: "Penyusunan Program Kerja",
-  //     image: "./Day2/3.png",
-  //     alt: "Penyusunan program kerja utama",
-  //     description:
-  //       "Kegiatan pra pembukaan menjadi langkah awal dalam pelaksanaan KKN SISDAMAS 121, 122, dan 123 di Desa Kandang Mukti.",
-  //   },
-  // ];
+  const galleryItems2 = [
+    {
+      title: "Pembukaan",
+      image: "./Day2/1.jpg",
+      alt: "Kegiatan pembukaan",
+      description:
+        "Kegiatan pembukaan resmi KKN SISDAMAS 121 dilaksanakan di Kantor Desa Kandangmukti sebagai langkah awal dimulainya program pengabdian masyarakat oleh para mahasiswa.",
+    },
+    {
+      title: "Observasi",
+      image: "./Day2/2.JPG",
+      alt: "Survey ke Sekolah",
+      description:
+        "Kegiatan observasi ini merupakan langkah awal tim KKN SISDAMAS 121 dalam memahami kondisi dan kebutuhan pendidikan di SDN 01 Kandangmukti.",
+    },
+    {
+      title: "Observasi",
+      image: "./Day2/3.jpg",
+      alt: "Survey Madrasah",
+      description:
+        "Observasi di Madrasah Al Ihya menjadi salah satu langkah awal penting dalam memahami kondisi dan kebutuhan Madrasah Al-Ihya di Desa Kandangmukti.",
+    },
+  ];
+  const galleryItems3 = [
+    {
+      title: "Mengajar",
+      image: "./Day3/1.jpg",
+      alt: "Kegiatan Mengajar",
+      description:
+        "Kegiatan mengajar ini menjadi momen berharga dalam proses pengabdian tim KKN SISDAMAS 121 di SDN 01 Kandangmukti.",
+    },
+    {
+      title: "Bimbel",
+      image: "./Day3/2.jpg",
+      alt: "Kegiatan Bimbel",
+      description:
+        "Kegiatan bimbingan belajar (bimbel) ini menjadi wadah interaksi positif antara tim KKN SISDAMAS 121 dan anak-anak di Desa Kandangmukti.",
+    },
+    {
+      title: "Mengaji",
+      image: "./Day3/3.JPG",
+      alt: "Kegiatan Mengaji",
+      description:
+        "Kegiatan mengaji dan mengajar Al-Qur’an di Madrasah Al-Ihya menjadi salah satu bentuk kontribusi spiritual tim KKN SISDAMAS 121 dalam mendampingi pendidikan keagamaan masyarakat.",
+    },
+  ];
 
   // Auto-slide Day 1
   useEffect(() => {
@@ -81,15 +106,26 @@ const Gallery = () => {
   }, [isPlaying1, galleryItems.length]);
 
   // Auto-slide Day 2
-  // useEffect(() => {
-  //   if (!isPlaying2) return;
-  //   const interval = setInterval(() => {
-  //     setCurrentIndex2((prev) =>
-  //       prev === galleryItems2.length - 1 ? 0 : prev + 1
-  //     );
-  //   }, 4000);
-  //   return () => clearInterval(interval);
-  // }, [isPlaying2, galleryItems2.length]);
+  useEffect(() => {
+    if (!isPlaying2) return;
+    const interval = setInterval(() => {
+      setCurrentIndex2((prev) =>
+        prev === galleryItems2.length - 1 ? 0 : prev + 1
+      );
+    }, 4000);
+    return () => clearInterval(interval);
+  }, [isPlaying2, galleryItems2.length]);
+
+  // Auto-slide Day 3
+  useEffect(() => {
+    if (!isPlaying3) return;
+    const interval = setInterval(() => {
+      setCurrentIndex3((prev) =>
+        prev === galleryItems3.length - 1 ? 0 : prev + 1
+      );
+    }, 4000);
+    return () => clearInterval(interval);
+  }, [isPlaying3, galleryItems3.length]);
 
   const renderCarousel = (
     items,
@@ -172,14 +208,22 @@ const Gallery = () => {
           "Day 1"
         )}
 
-        {/* {renderCarousel(
+        {renderCarousel(
           galleryItems2,
           currentIndex2,
           setCurrentIndex2,
           isPlaying2,
           () => setIsPlaying2(!isPlaying2),
           "Day 2"
-        )} */}
+        )}
+        {renderCarousel(
+          galleryItems3,
+          currentIndex3,
+          setCurrentIndex3,
+          isPlaying3,
+          () => setIsPlaying3(!isPlaying3),
+          "Day 3"
+        )}
       </div>
     </section>
   );

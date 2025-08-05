@@ -62,7 +62,10 @@ const Header = () => {
             >
               Testimoni Warga
             </a> */}
-            <a href="#galery" className="px-3 py-2 rounded hover:text-gray-300">
+            <a
+              href="#gallery"
+              className="px-3 py-2 rounded hover:text-gray-300"
+            >
               Galeri
             </a>
             <a href="#pdf" className="px-3 py-2 rounded hover:text-gray-300">
