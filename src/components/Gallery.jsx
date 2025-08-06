@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { ChevronLeft, ChevronRight, Play, Pause } from "lucide-react";
 
 const GalleryItem = ({ title, image, alt, description }) => (
-  <div className="bg-gray-50 rounded-lg overflow-hidden shadow-md">
+  <div className="bg-gray-50 rounded-lg overflow-hidden">
     <div className="md:flex">
       <div className="md:w-1/3">
         <img src={image} alt={alt} className="w-full h-64 object-cover" />
@@ -19,9 +19,11 @@ const Gallery = () => {
   const [currentIndex1, setCurrentIndex1] = useState(0);
   const [currentIndex2, setCurrentIndex2] = useState(0);
   const [currentIndex3, setCurrentIndex3] = useState(0);
+  const [currentIndex4, setCurrentIndex4] = useState(0);
   const [isPlaying1, setIsPlaying1] = useState(true);
   const [isPlaying2, setIsPlaying2] = useState(true);
   const [isPlaying3, setIsPlaying3] = useState(true);
+  const [isPlaying4, setIsPlaying4] = useState(true);
 
   const galleryItems = [
     {
@@ -93,6 +95,22 @@ const Gallery = () => {
         "Kegiatan mengaji dan mengajar Al-Qur’an di Madrasah Al-Ihya menjadi salah satu bentuk kontribusi spiritual tim KKN SISDAMAS 121 dalam mendampingi pendidikan keagamaan masyarakat.",
     },
   ];
+  const galleryItems4 = [
+    {
+      title: "Mengajar",
+      image: "./Day4/1.JPG",
+      alt: "Kegiatan Mengajar",
+      description:
+        "Kegiatan belajar mengajar di hari kedua di SDN 01 Kandangmukti berlangsung dengan antusiasme yang tinggi. Tim KKN SISDAMAS 121 tidak hanya menyampaikan materi pelajaran, tetapi juga menciptakan suasana kelas yang interaktif dan menyenangkan.",
+    },
+    {
+      title: "Mengaji",
+      image: "./Day4/2.JPG",
+      alt: "Kegiatan Mengaji",
+      description:
+        "Kegiatan mengaji di Madrasah Al-Ihya, suasana kekeluargaan dan kedekatan emosional semakin terasa antara tim KKN dan para santri. Kegiatan belajar mengaji berlangsung dengan semangat dan keceriaan anak-anak yang membuat proses pembelajaran terasa ringan dan menyenangkan.",
+    },
+  ];
 
   // Auto-slide Day 1
   useEffect(() => {
@@ -126,6 +144,17 @@ const Gallery = () => {
     }, 4000);
     return () => clearInterval(interval);
   }, [isPlaying3, galleryItems3.length]);
+
+  // Auto-slide Day 4
+  useEffect(() => {
+    if (!isPlaying4) return;
+    const interval = setInterval(() => {
+      setCurrentIndex4((prev) =>
+        prev === galleryItems4.length - 1 ? 0 : prev + 1
+      );
+    }, 4000);
+    return () => clearInterval(interval);
+  }, [isPlaying4, galleryItems4.length]);
 
   const renderCarousel = (
     items,
@@ -223,6 +252,14 @@ const Gallery = () => {
           isPlaying3,
           () => setIsPlaying3(!isPlaying3),
           "Day 3"
+        )}
+        {renderCarousel(
+          galleryItems4,
+          currentIndex4,
+          setCurrentIndex4,
+          isPlaying4,
+          () => setIsPlaying4(!isPlaying4),
+          "Day 4"
         )}
       </div>
     </section>
