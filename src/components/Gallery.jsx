@@ -72,6 +72,7 @@ const Gallery = () => {
         "Observasi di Madrasah Al Ihya menjadi salah satu langkah awal penting dalam memahami kondisi dan kebutuhan Madrasah Al-Ihya di Desa Kandangmukti.",
     },
   ];
+
   const galleryItems3 = [
     {
       title: "Mengajar",
@@ -95,6 +96,7 @@ const Gallery = () => {
         "Kegiatan mengaji dan mengajar Al-Qur’an di Madrasah Al-Ihya menjadi salah satu bentuk kontribusi spiritual tim KKN SISDAMAS 121 dalam mendampingi pendidikan keagamaan masyarakat.",
     },
   ];
+
   const galleryItems4 = [
     {
       title: "Mengajar",
@@ -163,56 +165,87 @@ const Gallery = () => {
     isPlaying,
     togglePlayPause,
     day
-  ) => (
-    <div className="relative max-w-4xl mx-auto mb-8">
-      <div className="text-center mb-6">
-        <h3 className="text-3xl font-bold text-gray-800 mb-2">{day}</h3>
-        <div className="w-16 h-1 bg-green-600 mx-auto rounded-full"></div>
-      </div>
+  ) => {
+    let touchStartX = 0;
+    let touchEndX = 0;
 
-      <div className="relative overflow-hidden rounded-lg shadow-lg">
-        <div
-          className="flex transition-transform duration-500 ease-in-out"
-          style={{ transform: `translateX(-${currentIndex * 100}%)` }}
-        >
-          {items.map((item, index) => (
-            <div key={index} className="w-full flex-shrink-0">
-              <GalleryItem {...item} />
-            </div>
-          ))}
+    const handleTouchStart = (e) => {
+      touchStartX = e.touches[0].clientX;
+    };
+
+    const handleTouchMove = (e) => {
+      touchEndX = e.touches[0].clientX;
+    };
+
+    const handleTouchEnd = () => {
+      const diff = touchStartX - touchEndX;
+      if (Math.abs(diff) > 50) {
+        if (diff > 0) {
+          // Geser ke kanan
+          setIndex(currentIndex === items.length - 1 ? 0 : currentIndex + 1);
+        } else {
+          // Geser ke kiri
+          setIndex(currentIndex === 0 ? items.length - 1 : currentIndex - 1);
+        }
+      }
+    };
+
+    return (
+      <div
+        className="relative max-w-4xl mx-auto mb-8"
+        onTouchStart={handleTouchStart}
+        onTouchMove={handleTouchMove}
+        onTouchEnd={handleTouchEnd}
+      >
+        <div className="text-center mb-6">
+          <h3 className="text-3xl font-bold text-gray-800 mb-2">{day}</h3>
+          <div className="w-16 h-1 bg-green-600 mx-auto rounded-full"></div>
         </div>
+
+        <div className="relative overflow-hidden rounded-lg shadow-lg">
+          <div
+            className="flex transition-transform duration-500 ease-in-out"
+            style={{ transform: `translateX(-${currentIndex * 100}%)` }}
+          >
+            {items.map((item, index) => (
+              <div key={index} className="w-full flex-shrink-0">
+                <GalleryItem {...item} />
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <button
+          onClick={() =>
+            setIndex(currentIndex === 0 ? items.length - 1 : currentIndex - 1)
+          }
+          className="absolute left-0 top-1/2 transform -translate-y-1/2 bg-white/40 hover:bg-white rounded-full p-2 shadow-md"
+        >
+          <ChevronLeft className="w-6 h-6 text-gray-600" />
+        </button>
+
+        <button
+          onClick={() =>
+            setIndex(currentIndex === items.length - 1 ? 0 : currentIndex + 1)
+          }
+          className="absolute right-0 top-1/2 transform -translate-y-1/2 bg-white/40 hover:bg-white rounded-full p-2 shadow-md"
+        >
+          <ChevronRight className="w-6 h-6 text-gray-600" />
+        </button>
+
+        <button
+          onClick={togglePlayPause}
+          className="absolute bottom-4 right-4 bg-green-600 hover:bg-green-700 text-white rounded-full p-2 shadow-md"
+        >
+          {isPlaying ? (
+            <Pause className="w-5 h-5" />
+          ) : (
+            <Play className="w-5 h-5" />
+          )}
+        </button>
       </div>
-
-      <button
-        onClick={() =>
-          setIndex(currentIndex === 0 ? items.length - 1 : currentIndex - 1)
-        }
-        className="absolute left-0 top-1/2 transform -translate-y-1/2 bg-white/40 hover:bg-white rounded-full p-2 shadow-md"
-      >
-        <ChevronLeft className="w-6 h-6 text-gray-600" />
-      </button>
-
-      <button
-        onClick={() =>
-          setIndex(currentIndex === items.length - 1 ? 0 : currentIndex + 1)
-        }
-        className="absolute right-0 top-1/2 transform -translate-y-1/2 bg-white/40 hover:bg-white rounded-full p-2 shadow-md"
-      >
-        <ChevronRight className="w-6 h-6 text-gray-600" />
-      </button>
-
-      <button
-        onClick={togglePlayPause}
-        className="absolute bottom-4 right-4 bg-green-600 hover:bg-green-700 text-white rounded-full p-2 shadow-md"
-      >
-        {isPlaying ? (
-          <Pause className="w-5 h-5" />
-        ) : (
-          <Play className="w-5 h-5" />
-        )}
-      </button>
-    </div>
-  );
+    );
+  };
 
   return (
     <section id="gallery" className="py-16 bg-white">
