@@ -1,40 +1,96 @@
-import { useState, useEffect } from "react";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Header from "./components/Header";
 import Hero from "./components/Hero";
 import ProfileDesa from "./components/ProfileDesa";
 import ProgramUnggulan from "./components/ProgramUnggulan";
 import TimKKN from "./components/TimKKN";
-// import TestimoniWarga from "./components/TestimoniWarga";
-import Gallery from "./components/Gallery";
+import GallerySiklus from "./components/GallerySiklus";
+import GalleryHarian1 from "./components/GalleryHarian1";
+// import GalleryHarian2 from "./components/GalleryHarian2";
+// import GalleryHarian3 from "./components/GalleryHarian3";
+// import GalleryHarian4 from "./components/GalleryHarian4";
 import DokumenLaporan from "./components/DokumenLaporan";
 import Footer from "./components/Footer";
 import BackToTop from "./components/BackToTop";
 
 function App() {
-  const [showBackToTop, setShowBackToTop] = useState(false);
-
-  useEffect(() => {
-    const handleScroll = () => {
-      setShowBackToTop(window.scrollY > 100);
-    };
-
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
-
   return (
-    <div className="font-sans">
+    <Router>
       <Header />
-      <Hero />
-      <ProfileDesa />
-      <ProgramUnggulan />
-      <TimKKN />
-      {/* <TestimoniWarga /> */}
-      <Gallery />
-      <DokumenLaporan />
-      <Footer />
-      <BackToTop show={showBackToTop} />
-    </div>
+      <Routes>
+        {/* Home Page */}
+        <Route
+          path="/"
+          element={
+            <>
+              <Hero />
+              <ProfileDesa />
+              <ProgramUnggulan />
+              <TimKKN />
+              <GallerySiklus />
+              <DokumenLaporan />
+              <Footer />
+              <BackToTop />
+            </>
+          }
+        />
+
+        {/* Gallery Pages for each Siklus */}
+        <Route
+          path="/gallery-harian1"
+          element={
+            <>
+              <GalleryHarian1 />
+              <Footer />
+              <BackToTop />
+            </>
+          }
+        />
+
+        {/* <Route path="/gallery-harian2" element={
+          <>
+            <GalleryHarian2 />
+            <Footer />
+            <BackToTop />
+          </>
+        } /> */}
+
+        {/* <Route path="/gallery-harian3" element={
+          <>
+            <GalleryHarian3 />
+            <Footer />
+            <BackToTop />
+          </>
+        } />
+        
+        <Route path="/gallery-harian4" element={
+          <>
+            <GalleryHarian4 />
+            <Footer />
+            <BackToTop />
+          </>
+        } /> */}
+
+        {/* 404 Page - Optional */}
+        <Route
+          path="*"
+          element={
+            <div className="min-h-screen flex items-center justify-center bg-gray-100">
+              <div className="text-center">
+                <h1 className="text-4xl font-bold text-gray-800 mb-4">404</h1>
+                <p className="text-gray-600 mb-8">Halaman tidak ditemukan</p>
+                <a
+                  href="/"
+                  className="px-6 py-3 bg-green-600 text-white rounded-lg hover:bg-green-700 transition"
+                >
+                  Kembali ke Beranda
+                </a>
+              </div>
+            </div>
+          }
+        />
+      </Routes>
+    </Router>
   );
 }
 
