@@ -1,19 +1,89 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { ChevronLeft, ChevronRight, Play, Pause } from "lucide-react";
 
-const GalleryItem = ({ title, image, alt, description }) => (
-  <div className="rounded-lg overflow-hidden">
-    <div className="md:flex">
-      <div className="md:w-1/3">
-        <img src={image} alt={alt} className="w-full h-64 object-cover" />
-      </div>
-      <div className="p-6 md:w-2/3 -mt-3">
-        <h4 className="text-lg font-semibold mb-2">{title}</h4>
-        <p className="text-gray-600">{description}</p>
+const GalleryItem = ({
+  title,
+  image,
+  alt,
+  description,
+  isVisible,
+  delay = 0,
+  itemIndex = 0,
+}) => {
+  const [imageLoaded, setImageLoaded] = useState(false);
+  const [titleVisible, setTitleVisible] = useState(false);
+  const [descVisible, setDescVisible] = useState(false);
+
+  useEffect(() => {
+    if (isVisible) {
+      // Step 1: Container appears
+      setTimeout(() => {
+        setImageLoaded(true);
+      }, delay + 300);
+
+      // Step 2: Title appears
+      setTimeout(() => {
+        setTitleVisible(true);
+      }, delay + 600);
+
+      // Step 3: Description appears
+      setTimeout(() => {
+        setDescVisible(true);
+      }, delay + 900);
+    }
+  }, [isVisible, delay]);
+
+  return (
+    <div
+      className={`rounded-lg overflow-hidden transition-all duration-1000 transform ${
+        isVisible
+          ? "opacity-100 translate-y-0 scale-100"
+          : "opacity-0 translate-y-12 scale-95"
+      }`}
+      style={{
+        transitionDelay: `${delay}ms`,
+      }}
+    >
+      <div className="md:flex">
+        <div className="md:w-1/3 overflow-hidden">
+          <div
+            className={`transition-all duration-800 transform ${
+              imageLoaded
+                ? "opacity-100 translate-x-0 scale-100"
+                : "opacity-0 -translate-x-8 scale-105"
+            }`}
+          >
+            <img
+              src={image}
+              alt={alt}
+              className="w-full h-64 object-cover transition-all duration-1200 hover:scale-105"
+            />
+          </div>
+        </div>
+        <div className="p-6 md:w-2/3 -mt-3">
+          <h4
+            className={`text-lg font-semibold mb-2 transition-all duration-800 transform ${
+              titleVisible
+                ? "opacity-100 translate-x-0 translate-y-0"
+                : "opacity-0 translate-x-12 translate-y-4"
+            }`}
+          >
+            {title}
+          </h4>
+          <p
+            className={`text-gray-600 transition-all duration-800 transform ${
+              descVisible
+                ? "opacity-100 translate-x-0 translate-y-0"
+                : "opacity-0 translate-x-16 translate-y-6"
+            }`}
+          >
+            {description}
+          </p>
+        </div>
       </div>
     </div>
-  </div>
-);
+  );
+};
 
 const GalleryHarian1 = () => {
   const [currentIndex1, setCurrentIndex1] = useState(0);
@@ -37,9 +107,87 @@ const GalleryHarian1 = () => {
   const [isPlaying9, setIsPlaying9] = useState(true);
   const [isPlaying10, setIsPlaying10] = useState(true);
 
+  // Animation states
+  const [headerVisible, setHeaderVisible] = useState(false);
+  const [visibleSections, setVisibleSections] = useState(new Set());
+  const [sectionTitlesVisible, setSectionTitlesVisible] = useState(new Set());
+  const [sectionContentVisible, setSectionContentVisible] = useState(new Set());
+  const [sectionButtonsVisible, setSectionButtonsVisible] = useState(new Set());
+  const headerRef = useRef(null);
+  const sectionRefs = useRef([]);
+
   // Scroll to top when component mounts
   useEffect(() => {
     window.scrollTo(0, 0);
+  }, []);
+
+  // Animation observer
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            const element = entry.target.getAttribute("data-element");
+            const index = entry.target.getAttribute("data-index");
+
+            if (element === "header") {
+              setHeaderVisible(true);
+            } else if (element === "section" && index !== null) {
+              const sectionIndex = parseInt(index);
+
+              // Step 1: Section becomes visible
+              setTimeout(() => {
+                setVisibleSections((prev) => new Set([...prev, sectionIndex]));
+              }, sectionIndex * 100);
+
+              // Step 2: Title appears
+              setTimeout(
+                () => {
+                  setSectionTitlesVisible(
+                    (prev) => new Set([...prev, sectionIndex])
+                  );
+                },
+                sectionIndex * 100 + 300
+              );
+
+              // Step 3: Content appears
+              setTimeout(
+                () => {
+                  setSectionContentVisible(
+                    (prev) => new Set([...prev, sectionIndex])
+                  );
+                },
+                sectionIndex * 100 + 600
+              );
+
+              // Step 4: Buttons appear
+              setTimeout(
+                () => {
+                  setSectionButtonsVisible(
+                    (prev) => new Set([...prev, sectionIndex])
+                  );
+                },
+                sectionIndex * 100 + 1200
+              );
+            }
+          }
+        });
+      },
+      {
+        threshold: 0.1,
+        rootMargin: "0px 0px -5% 0px",
+      }
+    );
+
+    if (headerRef.current) {
+      observer.observe(headerRef.current);
+    }
+
+    sectionRefs.current.forEach((ref) => {
+      if (ref) observer.observe(ref);
+    });
+
+    return () => observer.disconnect();
   }, []);
 
   const galleryItems = [
@@ -219,7 +367,7 @@ const GalleryHarian1 = () => {
       image: "./Day9/3.JPG",
       alt: "Kegiatan Mengaji",
       description:
-        "Kegiatan mengajar ngaji di Madrasah Al-Ihya menjadi salah satu program rutin tim KKN SISDAMAS 121 Desa Kandang Mukti. Dengan penuh kesabaran, para mahasiswa membimbing anak-anak dalam membaca Al-Qur’an, memperbaiki tajwid, dan memahami makna ayat, sekaligus menanamkan nilai-nilai keislaman sejak dini.",
+        "Kegiatan mengajar ngaji di Madrasah Al-Ihya menjadi salah satu program rutin tim KKN SISDAMAS 121 Desa Kandang Mukti. Dengan penuh kesabaran, para mahasiswa membimbing anak-anak dalam membaca Al-Qur'an, memperbaiki tajwid, dan memahami makna ayat, sekaligus menanamkan nilai-nilai keislaman sejak dini.",
     },
   ];
 
@@ -240,7 +388,7 @@ const GalleryHarian1 = () => {
     },
   ];
 
-  // Auto-slide Day 1
+  // Auto-slide functions
   useEffect(() => {
     if (!isPlaying1) return;
     const interval = setInterval(() => {
@@ -251,7 +399,6 @@ const GalleryHarian1 = () => {
     return () => clearInterval(interval);
   }, [isPlaying1, galleryItems.length]);
 
-  // Auto-slide Day 2
   useEffect(() => {
     if (!isPlaying2) return;
     const interval = setInterval(() => {
@@ -262,7 +409,6 @@ const GalleryHarian1 = () => {
     return () => clearInterval(interval);
   }, [isPlaying2, galleryItems2.length]);
 
-  // Auto-slide Day 3
   useEffect(() => {
     if (!isPlaying3) return;
     const interval = setInterval(() => {
@@ -273,7 +419,6 @@ const GalleryHarian1 = () => {
     return () => clearInterval(interval);
   }, [isPlaying3, galleryItems3.length]);
 
-  // Auto-slide Day 4
   useEffect(() => {
     if (!isPlaying4) return;
     const interval = setInterval(() => {
@@ -284,7 +429,6 @@ const GalleryHarian1 = () => {
     return () => clearInterval(interval);
   }, [isPlaying4, galleryItems4.length]);
 
-  // Auto-slide Day 5
   useEffect(() => {
     if (!isPlaying5) return;
     const interval = setInterval(() => {
@@ -295,7 +439,6 @@ const GalleryHarian1 = () => {
     return () => clearInterval(interval);
   }, [isPlaying5, galleryItems5.length]);
 
-  // Auto-slide Day 6
   useEffect(() => {
     if (!isPlaying6) return;
     const interval = setInterval(() => {
@@ -306,7 +449,6 @@ const GalleryHarian1 = () => {
     return () => clearInterval(interval);
   }, [isPlaying6, galleryItems6.length]);
 
-  // Auto-slide Day 7
   useEffect(() => {
     if (!isPlaying7) return;
     const interval = setInterval(() => {
@@ -317,7 +459,6 @@ const GalleryHarian1 = () => {
     return () => clearInterval(interval);
   }, [isPlaying7, galleryItems7.length]);
 
-  // Auto-slide Day 8
   useEffect(() => {
     if (!isPlaying8) return;
     const interval = setInterval(() => {
@@ -328,7 +469,6 @@ const GalleryHarian1 = () => {
     return () => clearInterval(interval);
   }, [isPlaying8, galleryItems8.length]);
 
-  // Auto-slide Day 9
   useEffect(() => {
     if (!isPlaying9) return;
     const interval = setInterval(() => {
@@ -339,7 +479,6 @@ const GalleryHarian1 = () => {
     return () => clearInterval(interval);
   }, [isPlaying9, galleryItems9.length]);
 
-  // Auto-slide Day 10
   useEffect(() => {
     if (!isPlaying10) return;
     const interval = setInterval(() => {
@@ -350,31 +489,68 @@ const GalleryHarian1 = () => {
     return () => clearInterval(interval);
   }, [isPlaying10, galleryItems10.length]);
 
-  // Render single photo view (tanpa carousel)
-  const renderSinglePhoto = (items, day) => {
+  // Render single photo with step-by-step animation
+  const renderSinglePhoto = (items, day, sectionIndex) => {
+    const isVisible = visibleSections.has(sectionIndex);
+    const titleVisible = sectionTitlesVisible.has(sectionIndex);
+    const contentVisible = sectionContentVisible.has(sectionIndex);
+
     return (
-      <div className="max-w-4xl mx-auto mb-8">
-        <div className="text-center mb-6">
-          <h3 className="text-3xl font-bold text-gray-800 mb-2">{day}</h3>
-          <div className="w-16 h-1 bg-green-600 mx-auto rounded-full"></div>
+      <div
+        ref={(el) => (sectionRefs.current[sectionIndex] = el)}
+        data-element="section"
+        data-index={sectionIndex}
+        className="max-w-4xl mx-auto mb-8"
+      >
+        <div
+          className={`text-center mb-6 transition-all duration-1000 ${
+            isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-12"
+          }`}
+        >
+          <h3
+            className={`text-3xl font-bold text-gray-800 mb-2 transition-all duration-800 transform ${
+              titleVisible
+                ? "opacity-100 scale-100 translate-y-0"
+                : "opacity-0 scale-75 translate-y-8"
+            }`}
+          >
+            {day}
+          </h3>
+          <div
+            className={`w-16 h-1 bg-green-600 mx-auto rounded-full transition-all duration-700 transform ${
+              titleVisible ? "opacity-100 scale-x-100" : "opacity-0 scale-x-0"
+            }`}
+          ></div>
         </div>
 
-        <div className="rounded-lg shadow-lg overflow-hidden">
-          <GalleryItem {...items[0]} />
+        <div
+          className={`rounded-lg shadow-lg overflow-hidden transition-all duration-1000 transform ${
+            contentVisible
+              ? "opacity-100 translate-y-0 scale-100"
+              : "opacity-0 translate-y-8 scale-95"
+          }`}
+        >
+          <GalleryItem {...items[0]} isVisible={contentVisible} delay={0} />
         </div>
       </div>
     );
   };
 
-  // Render carousel view (untuk multiple photos)
+  // Render carousel with step-by-step animation
   const renderCarousel = (
     items,
     currentIndex,
     setIndex,
     isPlaying,
     togglePlayPause,
-    day
+    day,
+    sectionIndex
   ) => {
+    const isVisible = visibleSections.has(sectionIndex);
+    const titleVisible = sectionTitlesVisible.has(sectionIndex);
+    const contentVisible = sectionContentVisible.has(sectionIndex);
+    const buttonsVisible = sectionButtonsVisible.has(sectionIndex);
+
     let touchStartX = 0;
     let touchEndX = 0;
 
@@ -390,10 +566,8 @@ const GalleryHarian1 = () => {
       const diff = touchStartX - touchEndX;
       if (Math.abs(diff) > 50) {
         if (diff > 0) {
-          // Geser ke kanan
           setIndex(currentIndex === items.length - 1 ? 0 : currentIndex + 1);
         } else {
-          // Geser ke kiri
           setIndex(currentIndex === 0 ? items.length - 1 : currentIndex - 1);
         }
       }
@@ -401,34 +575,72 @@ const GalleryHarian1 = () => {
 
     return (
       <div
+        ref={(el) => (sectionRefs.current[sectionIndex] = el)}
+        data-element="section"
+        data-index={sectionIndex}
         className="relative max-w-4xl mx-auto mb-8"
         onTouchStart={handleTouchStart}
         onTouchMove={handleTouchMove}
         onTouchEnd={handleTouchEnd}
       >
-        <div className="text-center mb-6">
-          <h3 className="text-3xl font-bold text-gray-800 mb-2">{day}</h3>
-          <div className="w-16 h-1 bg-green-600 mx-auto rounded-full"></div>
+        {/* Step 1: Section container appears */}
+        <div
+          className={`text-center mb-6 transition-all duration-1000 transform ${
+            isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-12"
+          }`}
+        >
+          {/* Step 2: Title appears */}
+          <h3
+            className={`text-3xl font-bold text-gray-800 mb-2 transition-all duration-800 transform ${
+              titleVisible
+                ? "opacity-100 scale-100 translate-y-0 rotate-0"
+                : "opacity-0 scale-75 translate-y-8 -rotate-3"
+            }`}
+          >
+            {day}
+          </h3>
+          <div
+            className={`w-16 h-1 bg-green-600 mx-auto rounded-full transition-all duration-700 transform ${
+              titleVisible ? "opacity-100 scale-x-100" : "opacity-0 scale-x-0"
+            }`}
+          ></div>
         </div>
 
-        <div className="relative overflow-hidden rounded-lg shadow-lg">
+        {/* Step 3: Content appears */}
+        <div
+          className={`relative overflow-hidden rounded-lg shadow-lg transition-all duration-1000 transform ${
+            contentVisible
+              ? "opacity-100 translate-y-0 scale-100"
+              : "opacity-0 translate-y-12 scale-95"
+          }`}
+        >
           <div
             className="flex transition-transform duration-500 ease-in-out"
             style={{ transform: `translateX(-${currentIndex * 100}%)` }}
           >
             {items.map((item, index) => (
               <div key={index} className="w-full flex-shrink-0">
-                <GalleryItem {...item} />
+                <GalleryItem
+                  {...item}
+                  isVisible={contentVisible}
+                  delay={index * 200}
+                  itemIndex={index}
+                />
               </div>
             ))}
           </div>
         </div>
 
+        {/* Step 4: Navigation Buttons appear */}
         <button
           onClick={() =>
             setIndex(currentIndex === 0 ? items.length - 1 : currentIndex - 1)
           }
-          className="absolute left-0 top-1/2 transform -translate-y-1/2 bg-white/40 hover:bg-white rounded-full p-2 shadow-md"
+          className={`absolute left-0 top-1/2 transform -translate-y-1/2 bg-white/40 hover:bg-white rounded-full p-2 shadow-md transition-all duration-800 hover:scale-110 hover:shadow-lg hover:-translate-x-1 ${
+            buttonsVisible
+              ? "opacity-100 translate-x-0 rotate-0"
+              : "opacity-0 -translate-x-8 -rotate-45"
+          }`}
         >
           <ChevronLeft className="w-6 h-6 text-gray-600" />
         </button>
@@ -437,14 +649,22 @@ const GalleryHarian1 = () => {
           onClick={() =>
             setIndex(currentIndex === items.length - 1 ? 0 : currentIndex + 1)
           }
-          className="absolute right-0 top-1/2 transform -translate-y-1/2 bg-white/40 hover:bg-white rounded-full p-2 shadow-md"
+          className={`absolute right-0 top-1/2 transform -translate-y-1/2 bg-white/40 hover:bg-white rounded-full p-2 shadow-md transition-all duration-800 hover:scale-110 hover:shadow-lg hover:translate-x-1 ${
+            buttonsVisible
+              ? "opacity-100 translate-x-0 rotate-0"
+              : "opacity-0 translate-x-8 rotate-45"
+          }`}
         >
           <ChevronRight className="w-6 h-6 text-gray-600" />
         </button>
 
         <button
           onClick={togglePlayPause}
-          className="absolute bottom-4 right-4 bg-green-600 hover:bg-green-700 text-white rounded-full p-2 shadow-md"
+          className={`absolute bottom-4 right-4 bg-green-600 hover:bg-green-700 text-white rounded-full p-2 shadow-md transition-all duration-800 hover:scale-110 hover:shadow-xl hover:-translate-y-1 ${
+            buttonsVisible
+              ? "opacity-100 translate-y-0 scale-100"
+              : "opacity-0 translate-y-8 scale-75"
+          }`}
         >
           {isPlaying ? (
             <Pause className="w-5 h-5" />
@@ -457,15 +677,46 @@ const GalleryHarian1 = () => {
   };
 
   return (
-    <section className="py-16 bg-white min-h-screen">
+    <section className="py-16 bg-white min-h-screen overflow-hidden">
       <div className="container mx-auto px-4">
-        {/* Header Section - Fixed positioning */}
-        <div className="text-center mb-12 sticky top-0 bg-white z-10 py-4">
-          <h2 className="text-3xl font-bold text-gray-800 mb-2">
+        {/* Header Section with Animation */}
+        <div
+          ref={headerRef}
+          data-element="header"
+          className={`text-center mb-12 sticky top-0 bg-white z-10 py-4 transition-all duration-1000 ${
+            headerVisible
+              ? "opacity-100 translate-y-0"
+              : "opacity-0 translate-y-8"
+          }`}
+        >
+          <h2
+            className={`text-3xl font-bold text-gray-800 mb-2 transition-all duration-700 ${
+              headerVisible ? "opacity-100 scale-100" : "opacity-0 scale-95"
+            }`}
+            style={{
+              transitionDelay: headerVisible ? "200ms" : "0ms",
+            }}
+          >
             Galeri Kegiatan Harian Siklus 1
           </h2>
-          <hr className="w-24 mx-auto my-4 border-t-2 border-green-600" />
-          <p className="text-gray-600 max-w-2xl mx-auto">
+          <hr
+            className={`w-24 mx-auto my-4 border-t-2 border-green-600 transition-all duration-700 transform ${
+              headerVisible ? "opacity-100 scale-x-100" : "opacity-0 scale-x-0"
+            }`}
+            style={{
+              transitionDelay: headerVisible ? "400ms" : "0ms",
+            }}
+          />
+          <p
+            className={`text-gray-600 max-w-2xl mx-auto transition-all duration-700 ${
+              headerVisible
+                ? "opacity-100 translate-y-0"
+                : "opacity-0 translate-y-4"
+            }`}
+            style={{
+              transitionDelay: headerVisible ? "600ms" : "0ms",
+            }}
+          >
             Dokumentasi harian kegiatan KKN di Siklus 1 dari hari ke-1 sampai
             hari ke-10 di Desa Kandangmukti.
           </p>
@@ -479,7 +730,8 @@ const GalleryHarian1 = () => {
             setCurrentIndex1,
             isPlaying1,
             () => setIsPlaying1(!isPlaying1),
-            "Day 1"
+            "Day 1",
+            0
           )}
 
           {renderCarousel(
@@ -488,7 +740,8 @@ const GalleryHarian1 = () => {
             setCurrentIndex2,
             isPlaying2,
             () => setIsPlaying2(!isPlaying2),
-            "Day 2"
+            "Day 2",
+            1
           )}
 
           {renderCarousel(
@@ -497,7 +750,8 @@ const GalleryHarian1 = () => {
             setCurrentIndex3,
             isPlaying3,
             () => setIsPlaying3(!isPlaying3),
-            "Day 3"
+            "Day 3",
+            2
           )}
 
           {renderCarousel(
@@ -506,7 +760,8 @@ const GalleryHarian1 = () => {
             setCurrentIndex4,
             isPlaying4,
             () => setIsPlaying4(!isPlaying4),
-            "Day 4"
+            "Day 4",
+            3
           )}
 
           {renderCarousel(
@@ -515,7 +770,8 @@ const GalleryHarian1 = () => {
             setCurrentIndex5,
             isPlaying5,
             () => setIsPlaying5(!isPlaying5),
-            "Day 5"
+            "Day 5",
+            4
           )}
 
           {renderCarousel(
@@ -524,11 +780,12 @@ const GalleryHarian1 = () => {
             setCurrentIndex6,
             isPlaying6,
             () => setIsPlaying6(!isPlaying6),
-            "Day 6"
+            "Day 6",
+            5
           )}
 
           {/* Day 7 menggunakan single photo karena hanya 1 foto */}
-          {renderSinglePhoto(galleryItems7, "Day 7")}
+          {renderSinglePhoto(galleryItems7, "Day 7", 6)}
 
           {renderCarousel(
             galleryItems8,
@@ -536,7 +793,8 @@ const GalleryHarian1 = () => {
             setCurrentIndex8,
             isPlaying8,
             () => setIsPlaying8(!isPlaying8),
-            "Day 8"
+            "Day 8",
+            7
           )}
 
           {renderCarousel(
@@ -545,7 +803,8 @@ const GalleryHarian1 = () => {
             setCurrentIndex9,
             isPlaying9,
             () => setIsPlaying9(!isPlaying9),
-            "Day 9"
+            "Day 9",
+            8
           )}
 
           {renderCarousel(
@@ -554,7 +813,8 @@ const GalleryHarian1 = () => {
             setCurrentIndex10,
             isPlaying10,
             () => setIsPlaying10(!isPlaying10),
-            "Day 10"
+            "Day 10",
+            9
           )}
         </div>
       </div>
