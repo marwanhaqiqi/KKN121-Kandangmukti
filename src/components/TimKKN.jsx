@@ -1,5 +1,146 @@
 import { useState, useEffect, useRef } from "react";
 
+const SupervisorCard = ({
+  image,
+  alt,
+  name,
+  title,
+  nip,
+  faculty,
+  expertise,
+  isVisible,
+  index,
+}) => (
+  <div
+    className={`bg-white rounded-lg shadow-md p-8 text-center hover:transform hover:-translate-y-2 hover:shadow-xl transition-all duration-700 relative overflow-hidden group max-w-md mx-auto ${
+      isVisible
+        ? "transform scale-100 opacity-100 rotate-0"
+        : "transform scale-75 opacity-0 rotate-3"
+    }`}
+    style={{
+      transitionDelay: `${index * 200}ms`,
+    }}
+  >
+    {/* Animated background gradient */}
+    <div className="absolute inset-0 bg-gradient-to-br from-blue-50 via-transparent to-blue-50 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+
+    {/* Corner decoration */}
+    <div
+      className={`absolute top-0 right-0 w-8 h-8 transition-all duration-700 ${
+        isVisible
+          ? "transform rotate-0 opacity-100"
+          : "transform rotate-45 opacity-0"
+      }`}
+      style={{
+        transitionDelay: `${index * 200 + 600}ms`,
+      }}
+    >
+      <div className="w-full h-full bg-gradient-to-bl from-blue-200 to-transparent rounded-bl-full"></div>
+    </div>
+
+    {/* Profile image */}
+    <div
+      className={`w-40 h-40 mx-auto mb-6 overflow-hidden rounded-full border-4 border-blue-100 relative group-hover:border-blue-200 transition-all duration-700 ${
+        isVisible ? "transform scale-100" : "transform scale-0"
+      }`}
+      style={{
+        transitionDelay: `${index * 200 + 100}ms`,
+      }}
+    >
+      <div className="absolute inset-0 bg-blue-200 rounded-full opacity-0 group-hover:opacity-20 group-hover:scale-110 transition-all duration-500"></div>
+      <img
+        src={image}
+        alt={alt}
+        className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500 relative z-10"
+      />
+    </div>
+
+    {/* Name */}
+    <h3
+      className={`text-2xl font-bold mb-2 relative z-10 transition-all duration-600 text-gray-800 ${
+        isVisible
+          ? "transform translate-x-0 opacity-100"
+          : "transform -translate-x-4 opacity-0"
+      }`}
+      style={{
+        transitionDelay: `${index * 200 + 200}ms`,
+      }}
+    >
+      {name}
+    </h3>
+
+    {/* Title */}
+    <div
+      className={`mb-3 relative z-10 transition-all duration-600 ${
+        isVisible
+          ? "transform translate-x-0 opacity-100"
+          : "transform translate-x-4 opacity-0"
+      }`}
+      style={{
+        transitionDelay: `${index * 200 + 300}ms`,
+      }}
+    >
+      <span className="inline-block px-4 py-2 bg-blue-50 text-blue-700 rounded-full text-sm font-semibold group-hover:bg-blue-100 group-hover:text-blue-800 transition-all duration-300 border border-blue-200">
+        {title}
+      </span>
+    </div>
+
+    {/* NIP */}
+    <p
+      className={`text-gray-600 text-sm mb-3 relative z-10 transition-all duration-600 font-medium ${
+        isVisible
+          ? "transform translate-y-0 opacity-100"
+          : "transform translate-y-3 opacity-0"
+      }`}
+      style={{
+        transitionDelay: `${index * 200 + 400}ms`,
+      }}
+    >
+      NIP: {nip}
+    </p>
+
+    {/* Faculty */}
+    <p
+      className={`text-gray-700 text-sm mb-3 relative z-10 transition-all duration-600 ${
+        isVisible
+          ? "transform translate-y-0 opacity-100"
+          : "transform translate-y-3 opacity-0"
+      }`}
+      style={{
+        transitionDelay: `${index * 200 + 450}ms`,
+      }}
+    >
+      {faculty}
+    </p>
+
+    {/* Expertise */}
+    <div
+      className={`relative z-10 transition-all duration-600 ${
+        isVisible
+          ? "transform translate-y-0 opacity-100"
+          : "transform translate-y-4 opacity-0"
+      }`}
+      style={{
+        transitionDelay: `${index * 200 + 500}ms`,
+      }}
+    >
+      <span className="text-xs text-gray-500 font-medium bg-gray-100 px-3 py-1 rounded-full">
+        {expertise}
+      </span>
+    </div>
+
+    {/* Bottom accent */}
+    <div
+      className={`absolute bottom-0 left-0 h-1 bg-gradient-to-r from-blue-400 to-blue-600 transition-all duration-800 ${
+        isVisible ? "w-full opacity-100" : "w-0 opacity-0"
+      }`}
+      style={{
+        transitionDelay: `${index * 200 + 600}ms`,
+      }}
+    ></div>
+  </div>
+);
+
 const TeamMemberCard = ({
   image,
   alt,
@@ -168,6 +309,9 @@ const TeamMemberCard = ({
 const TimKKN = () => {
   const [scrollElements, setScrollElements] = useState({
     backgroundElements: false,
+    supervisorHeader: false,
+    supervisorSubtitle: false,
+    supervisorCard: false,
     header: false,
     subtitle: false,
     teamGrid: false,
@@ -177,11 +321,25 @@ const TimKKN = () => {
 
   const sectionRef = useRef(null);
   const backgroundRef = useRef(null);
+  const supervisorHeaderRef = useRef(null);
+  const supervisorSubtitleRef = useRef(null);
+  const supervisorCardRef = useRef(null);
   const headerRef = useRef(null);
   const subtitleRef = useRef(null);
   const teamGridRef = useRef(null);
   const statisticsRef = useRef(null);
   const floatingRef = useRef(null);
+
+  // Data Dosen Pembimbing Lapangan
+  const supervisor = {
+    image: "./Profile/DPL.jpeg",
+    alt: "Foto Dosen Pembimbing Lapangan KKN",
+    name: "Dr. H. Dendi Yuda S.,M.Ag.",
+    title: "Dosen Pembimbing Lapangan",
+    nip: "198501012010121001",
+    faculty: "Fakultas Tarbiyah dan Keguruan",
+    expertise: "Pendidikan dan Pengembangan Masyarakat",
+  };
 
   const teamMembers = [
     {
@@ -215,6 +373,16 @@ const TimKKN = () => {
       logbookUrl: "https://example.com/logbook/wilda",
     },
     {
+      image: "./Profile/2.png",
+      alt: "Foto anggota tim KKN dengan nama Zahra Katlya Isfarayani",
+      name: "Zahra Katlya Isfarayani",
+      role: "Acara",
+      faculty: "Fakultas Tarbiyah dan Keguruan",
+      major: "Tadris Bahasa Indonesia",
+      igUrl: "https://instagram.com/rayazki",
+      logbookUrl: "https://example.com/logbook/katlya",
+    },
+    {
       image: "./Profile/4.png",
       alt: "Foto anggota tim KKN dengan nama Syhadad Nabil Mudzafar",
       name: "Syhadad Nabil Mudzafar",
@@ -235,16 +403,6 @@ const TimKKN = () => {
       logbookUrl: "https://example.com/logbook/saffa",
     },
     {
-      image: "./Profile/2.png",
-      alt: "Foto anggota tim KKN dengan nama Zahra Katlya Isfarayani",
-      name: "Zahra Katlya Isfarayani",
-      role: "Acara",
-      faculty: "Fakultas Tarbiyah dan Keguruan",
-      major: "Tadris Bahasa Indonesia",
-      igUrl: "https://instagram.com/rayazki",
-      logbookUrl: "https://example.com/logbook/katlya",
-    },
-    {
       image: "./Profile/1.png",
       alt: "Foto anggota tim KKN dengan nama Muhammad Khoerul Abdi",
       name: "Muhammad Khoerul Abdi",
@@ -255,16 +413,6 @@ const TimKKN = () => {
       logbookUrl: "https://example.com/logbook/abdi",
     },
     {
-      image: "./Profile/12.png",
-      alt: "Foto anggota tim KKN dengan nama Gallung Marwan Haqiqi Hafidz",
-      name: "Gallung Marwan Haqiqi Hafidz",
-      role: "Mobile Support",
-      faculty: "Fakultas Sains dan Teknologi",
-      major: "Teknik Informatika",
-      igUrl: "https://instagram.com/marwansyah_003",
-      logbookUrl: "https://example.com/logbook/marwan",
-    },
-    {
       image: "./Profile/11.png",
       alt: "Foto anggota tim KKN dengan nama Muhammad Akhdan Ruwanda",
       name: "Muhammad Akhdan Ruwanda",
@@ -273,6 +421,16 @@ const TimKKN = () => {
       major: "Studi Agama-Agama",
       igUrl: "https://instagram.com/aakhdan_rvw",
       logbookUrl: "https://example.com/logbook/akhdan",
+    },
+    {
+      image: "./Profile/12.png",
+      alt: "Foto anggota tim KKN dengan nama Gallung Marwan Haqiqi Hafidz",
+      name: "Gallung Marwan Haqiqi Hafidz",
+      role: "Mobile Support",
+      faculty: "Fakultas Sains dan Teknologi",
+      major: "Teknik Informatika",
+      igUrl: "https://instagram.com/marwansyah_003",
+      logbookUrl: "https://example.com/logbook/marwan",
     },
     {
       image: "./Profile/9.png",
@@ -364,11 +522,14 @@ const TimKKN = () => {
     // Elements with staggered observation timing
     const elements = [
       { ref: backgroundRef, id: "backgroundElements", delay: 0 },
-      { ref: headerRef, id: "header", delay: 200 },
-      { ref: subtitleRef, id: "subtitle", delay: 400 },
-      { ref: teamGridRef, id: "teamGrid", delay: 600 },
-      { ref: statisticsRef, id: "statistics", delay: 1000 },
-      { ref: floatingRef, id: "floatingElements", delay: 1200 },
+      { ref: supervisorHeaderRef, id: "supervisorHeader", delay: 200 },
+      { ref: supervisorSubtitleRef, id: "supervisorSubtitle", delay: 400 },
+      { ref: supervisorCardRef, id: "supervisorCard", delay: 600 },
+      { ref: headerRef, id: "header", delay: 800 },
+      { ref: subtitleRef, id: "subtitle", delay: 1000 },
+      { ref: teamGridRef, id: "teamGrid", delay: 1200 },
+      { ref: statisticsRef, id: "statistics", delay: 1400 },
+      { ref: floatingRef, id: "floatingElements", delay: 1600 },
     ];
 
     elements.forEach(({ ref, id, delay }) => {
@@ -394,7 +555,7 @@ const TimKKN = () => {
       {/* Enhanced animated background elements */}
       <div ref={backgroundRef} className="absolute inset-0">
         <div
-          className={`absolute top-10 left-0 w-72 h-72 bg-gradient-to-r from-green-100 to-transparent rounded-full opacity-30 transition-all duration-2000 ease-out ${
+          className={`absolute top-10 left-0 w-72 h-72 bg-gradient-to-r from-blue-100 to-transparent rounded-full opacity-30 transition-all duration-2000 ease-out ${
             scrollElements.backgroundElements
               ? "transform translate-x-0 scale-100"
               : "transform -translate-x-full scale-75"
@@ -409,7 +570,7 @@ const TimKKN = () => {
           style={{ transitionDelay: "300ms" }}
         ></div>
         <div
-          className={`absolute top-1/3 left-1/3 w-48 h-48 bg-gradient-to-r from-green-200/20 to-transparent rounded-full transition-all duration-2000 ease-out ${
+          className={`absolute top-1/3 left-1/3 w-48 h-48 bg-gradient-to-r from-blue-200/20 to-transparent rounded-full transition-all duration-2000 ease-out ${
             scrollElements.backgroundElements
               ? "transform scale-100 rotate-0"
               : "transform scale-0 rotate-45"
@@ -419,117 +580,175 @@ const TimKKN = () => {
       </div>
 
       <div className="container mx-auto px-4 relative z-10">
-        {/* Enhanced header with scroll animation */}
-        <div className="text-center mb-12">
-          <h2
-            ref={headerRef}
-            className={`text-3xl font-bold text-gray-800 mb-2 transition-all duration-1000 ease-out ${
-              scrollElements.header
-                ? "transform translate-y-0 opacity-100 scale-100"
-                : "transform -translate-y-8 opacity-0 scale-95"
-            }`}
-          >
-            Tim KKN Desa Kandangmukti
-          </h2>
+        {/* Dosen Pembimbing Lapangan Section */}
+        <div className="mb-20">
+          {/* Supervisor header */}
+          <div className="text-center mb-12">
+            <h2
+              ref={supervisorHeaderRef}
+              className={`text-3xl font-bold text-gray-800 mb-2 transition-all duration-1000 ease-out ${
+                scrollElements.supervisorHeader
+                  ? "transform translate-y-0 opacity-100 scale-100"
+                  : "transform -translate-y-8 opacity-0 scale-95"
+              }`}
+            >
+              Dosen Pembimbing Lapangan
+            </h2>
 
-          <div
-            className={`transition-all duration-800 ease-out ${
-              scrollElements.header
-                ? "transform scale-x-100 opacity-100"
-                : "transform scale-x-0 opacity-0"
-            }`}
-            style={{ transitionDelay: "200ms" }}
-          >
-            <hr className="w-24 mx-auto my-4 border-t-2 border-green-600" />
-          </div>
-
-          <p
-            ref={subtitleRef}
-            className={`text-gray-600 max-w-2xl mx-auto transition-all duration-1000 ease-out ${
-              scrollElements.subtitle
-                ? "transform translate-y-0 opacity-100"
-                : "transform translate-y-6 opacity-0"
-            }`}
-          >
-            Berikut adalah anggota tim KKN yang telah berkontribusi dalam
-            pelaksanaan program di Desa Kandangmukti dengan penuh dedikasi.
-          </p>
-        </div>
-
-        {/* Enhanced team grid with scroll animation */}
-        <div
-          ref={teamGridRef}
-          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8"
-        >
-          {teamMembers.map((member, index) => (
-            <TeamMemberCard
-              key={index}
-              {...member}
-              index={index}
-              isVisible={scrollElements.teamGrid}
-            />
-          ))}
-        </div>
-
-        {/* Enhanced team statistics with scroll animation */}
-        <div
-          ref={statisticsRef}
-          className={`mt-16 bg-gradient-to-r from-green-600 via-green-700 to-green-600 rounded-2xl p-8 text-white relative overflow-hidden transition-all duration-1000 ease-out ${
-            scrollElements.statistics
-              ? "transform translate-y-0 opacity-100 scale-100"
-              : "transform translate-y-12 opacity-0 scale-95"
-          }`}
-        >
-          {/* Background pattern */}
-          <div className="absolute inset-0 opacity-10">
-            <div className="absolute top-0 right-0 w-32 h-32 bg-white rounded-full -translate-y-16 translate-x-16"></div>
-            <div className="absolute bottom-0 left-0 w-24 h-24 bg-white rounded-full translate-y-12 -translate-x-12"></div>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-6 text-center relative z-10">
             <div
-              className={`transition-all duration-700 ${
-                scrollElements.statistics
-                  ? "transform translate-y-0 opacity-100"
-                  : "transform translate-y-4 opacity-0"
+              className={`transition-all duration-800 ease-out ${
+                scrollElements.supervisorHeader
+                  ? "transform scale-x-100 opacity-100"
+                  : "transform scale-x-0 opacity-0"
               }`}
               style={{ transitionDelay: "200ms" }}
             >
-              <div className="text-3xl font-bold mb-2 text-green-100">15</div>
-              <div className="text-green-200 font-medium">Total Anggota</div>
+              <hr className="w-24 mx-auto my-4 border-t-2 border-blue-600" />
             </div>
-            <div
-              className={`transition-all duration-700 ${
-                scrollElements.statistics
+
+            <p
+              ref={supervisorSubtitleRef}
+              className={`text-gray-600 max-w-2xl mx-auto transition-all duration-1000 ease-out ${
+                scrollElements.supervisorSubtitle
                   ? "transform translate-y-0 opacity-100"
-                  : "transform translate-y-4 opacity-0"
+                  : "transform translate-y-6 opacity-0"
               }`}
-              style={{ transitionDelay: "300ms" }}
             >
-              <div className="text-3xl font-bold mb-2 text-green-100">7</div>
-              <div className="text-green-200 font-medium">Fakultas Berbeda</div>
+              Dosen pembimbing yang mendampingi dan membimbing tim KKN dalam
+              pelaksanaan program pengabdian masyarakat di Desa Kandangmukti.
+            </p>
+          </div>
+
+          {/* Supervisor card */}
+          <div ref={supervisorCardRef} className="flex justify-center">
+            <SupervisorCard
+              {...supervisor}
+              isVisible={scrollElements.supervisorCard}
+              index={0}
+            />
+          </div>
+        </div>
+
+        {/* Tim KKN Section */}
+        <div>
+          {/* Enhanced header with scroll animation */}
+          <div className="text-center mb-12">
+            <h2
+              ref={headerRef}
+              className={`text-3xl font-bold text-gray-800 mb-2 transition-all duration-1000 ease-out ${
+                scrollElements.header
+                  ? "transform translate-y-0 opacity-100 scale-100"
+                  : "transform -translate-y-8 opacity-0 scale-95"
+              }`}
+            >
+              Tim KKN Desa Kandangmukti
+            </h2>
+
+            <div
+              className={`transition-all duration-800 ease-out ${
+                scrollElements.header
+                  ? "transform scale-x-100 opacity-100"
+                  : "transform scale-x-0 opacity-0"
+              }`}
+              style={{ transitionDelay: "200ms" }}
+            >
+              <hr className="w-24 mx-auto my-4 border-t-2 border-green-600" />
             </div>
-            <div
-              className={`transition-all duration-700 ${
-                scrollElements.statistics
+
+            <p
+              ref={subtitleRef}
+              className={`text-gray-600 max-w-2xl mx-auto transition-all duration-1000 ease-out ${
+                scrollElements.subtitle
                   ? "transform translate-y-0 opacity-100"
-                  : "transform translate-y-4 opacity-0"
+                  : "transform translate-y-6 opacity-0"
               }`}
-              style={{ transitionDelay: "400ms" }}
             >
-              <div className="text-3xl font-bold mb-2 text-green-100">45</div>
-              <div className="text-green-200 font-medium">Hari Pengabdian</div>
+              Berikut adalah anggota tim KKN yang telah berkontribusi dalam
+              pelaksanaan program di Desa Kandangmukti dengan penuh dedikasi.
+            </p>
+          </div>
+
+          {/* Enhanced team grid with scroll animation */}
+          <div
+            ref={teamGridRef}
+            className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8"
+          >
+            {teamMembers.map((member, index) => (
+              <TeamMemberCard
+                key={index}
+                {...member}
+                index={index}
+                isVisible={scrollElements.teamGrid}
+              />
+            ))}
+          </div>
+
+          {/* Enhanced team statistics with scroll animation */}
+          <div
+            ref={statisticsRef}
+            className={`mt-16 bg-gradient-to-r from-green-600 via-green-700 to-green-600 rounded-2xl p-8 text-white relative overflow-hidden transition-all duration-1000 ease-out ${
+              scrollElements.statistics
+                ? "transform translate-y-0 opacity-100 scale-100"
+                : "transform translate-y-12 opacity-0 scale-95"
+            }`}
+          >
+            {/* Background pattern */}
+            <div className="absolute inset-0 opacity-10">
+              <div className="absolute top-0 right-0 w-32 h-32 bg-white rounded-full -translate-y-16 translate-x-16"></div>
+              <div className="absolute bottom-0 left-0 w-24 h-24 bg-white rounded-full translate-y-12 -translate-x-12"></div>
             </div>
-            <div
-              className={`transition-all duration-700 ${
-                scrollElements.statistics
-                  ? "transform translate-y-0 opacity-100"
-                  : "transform translate-y-4 opacity-0"
-              }`}
-              style={{ transitionDelay: "500ms" }}
-            >
-              <div className="text-3xl font-bold mb-2 text-green-100">100%</div>
-              <div className="text-green-200 font-medium">Dedikasi Tim</div>
+
+            <div className="grid grid-cols-1 md:grid-cols-4 gap-6 text-center relative z-10">
+              <div
+                className={`transition-all duration-700 ${
+                  scrollElements.statistics
+                    ? "transform translate-y-0 opacity-100"
+                    : "transform translate-y-4 opacity-0"
+                }`}
+                style={{ transitionDelay: "200ms" }}
+              >
+                <div className="text-3xl font-bold mb-2 text-green-100">15</div>
+                <div className="text-green-200 font-medium">Total Anggota</div>
+              </div>
+              <div
+                className={`transition-all duration-700 ${
+                  scrollElements.statistics
+                    ? "transform translate-y-0 opacity-100"
+                    : "transform translate-y-4 opacity-0"
+                }`}
+                style={{ transitionDelay: "300ms" }}
+              >
+                <div className="text-3xl font-bold mb-2 text-green-100">7</div>
+                <div className="text-green-200 font-medium">
+                  Fakultas Berbeda
+                </div>
+              </div>
+              <div
+                className={`transition-all duration-700 ${
+                  scrollElements.statistics
+                    ? "transform translate-y-0 opacity-100"
+                    : "transform translate-y-4 opacity-0"
+                }`}
+                style={{ transitionDelay: "400ms" }}
+              >
+                <div className="text-3xl font-bold mb-2 text-green-100">33</div>
+                <div className="text-green-200 font-medium">
+                  Hari Pengabdian
+                </div>
+              </div>
+              <div
+                className={`transition-all duration-700 ${
+                  scrollElements.statistics
+                    ? "transform translate-y-0 opacity-100"
+                    : "transform translate-y-4 opacity-0"
+                }`}
+                style={{ transitionDelay: "500ms" }}
+              >
+                <div className="text-3xl font-bold mb-2 text-green-100">
+                  100%
+                </div>
+                <div className="text-green-200 font-medium">Dedikasi Tim</div>
+              </div>
             </div>
           </div>
         </div>
@@ -546,7 +765,7 @@ const TimKKN = () => {
           style={{ transitionDelay: "200ms" }}
         ></div>
         <div
-          className={`absolute bottom-1/3 left-20 w-3 h-3 bg-green-500 rounded-full transition-all duration-1000 ${
+          className={`absolute bottom-1/3 left-20 w-3 h-3 bg-blue-500 rounded-full transition-all duration-1000 ${
             scrollElements.floatingElements
               ? "opacity-25 animate-bounce transform translate-y-0"
               : "opacity-0 transform translate-y-4"
@@ -562,7 +781,7 @@ const TimKKN = () => {
           style={{ transitionDelay: "600ms" }}
         ></div>
         <div
-          className={`absolute bottom-1/4 left-1/3 w-2 h-2 bg-green-600 rounded-full transition-all duration-1000 ${
+          className={`absolute bottom-1/4 left-1/3 w-2 h-2 bg-blue-600 rounded-full transition-all duration-1000 ${
             scrollElements.floatingElements
               ? "opacity-35 animate-bounce transform translate-y-0"
               : "opacity-0 transform translate-y-4"

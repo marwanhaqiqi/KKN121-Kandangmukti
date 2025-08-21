@@ -6,7 +6,7 @@ const siklusData = [
     id: 1,
     title: "Siklus 1",
     description:
-      "Pada Siklus 1, tim KKN SISDAMAS 121 melaksanakan kegiatan yang berfokus pada bidang pendidikan, keagamaan, dan kesehatan lingkungan di Desa Kandang Mukti. Kegiatan yang dilakukan meliputi mengajar PJOK di kelas 1 SDN 01 Kandangmukti untuk meningkatkan keterampilan motorik dan kedisiplinan siswa, mengajar ngaji di Madrasah Al-Ihya bersama anak-anak desa guna memperdalam kemampuan membaca Al-Qur'an serta pemahaman keagamaan, dan melaksanakan rembug warga untuk berdiskusi terkait program serta kebutuhan desa, khususnya dalam aspek kesehatan lingkungan. Seluruh kegiatan berjalan lancar berkat dukungan dan partisipasi aktif dari pihak sekolah, madrasah, serta masyarakat desa.",
+      "Tim KKN SISDAMAS 121 melaksanakan kegiatan pendidikan, keagamaan, dan kesehatan lingkungan di Desa Kandang Mukti. Kegiatan meliputi mengajar PJOK di SDN 01 Kandangmukti, mengajar ngaji di Madrasah Al-Ihya, dan rembug warga untuk membahas program kesehatan lingkungan.",
     image: "./BGSiklus/BG1.png",
     link: "/gallery-harian1",
   },
@@ -14,8 +14,8 @@ const siklusData = [
     id: 2,
     title: "Siklus 2",
     description:
-      "Pada Siklus 2, kami fokus pada kegiatan pemberdayaan masyarakat seperti pelatihan UMKM, gotong royong, dan penghijauan.",
-    image: "./images/siklus2.jpg",
+      "Tim KKN SISDAMAS 121 Desa Kandangmukti melaksanakan program di bidang pendidikan, kesehatan, lingkungan, dan pemberdayaan masyarakat. Kegiatan meliputi sosialisasi PHBS, Jum’at Bersih, pembuatan Taman Tanaman Obat, observasi bersama Bumdes, serta verifikasi dan sosialisasi data desa guna mendukung pembangunan yang tepat sasaran.",
+    image: "./BGSiklus/BG2.png",
     link: "/gallery-harian2",
   },
   {
@@ -23,7 +23,7 @@ const siklusData = [
     title: "Siklus 3",
     description:
       "Siklus 3 berisi kegiatan penutupan KKN, pameran hasil kerja, serta evaluasi program bersama warga.",
-    image: "./images/siklus3.jpg",
+    image: "./BGSiklus/BG3.png",
     link: "/gallery-harian3",
   },
   {
@@ -31,7 +31,7 @@ const siklusData = [
     title: "Siklus 4",
     description:
       "Siklus 4 merupakan evaluasi dan dokumentasi akhir dari seluruh program KKN yang telah dilaksanakan di Desa Kandangmukti.",
-    image: "./images/siklus4.jpg",
+    image: "./FotoProgram/belom.png",
     link: "/gallery-harian4",
   },
 ];
@@ -98,7 +98,7 @@ const GallerySiklus = () => {
       </div>
 
       {/* Grid responsive: 1 kolom di mobile, 2 kolom di tablet ke atas */}
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-20 px-4 md:px-40">
         {siklusData.map((siklus, index) => (
           <div
             key={siklus.id}
@@ -117,7 +117,7 @@ const GallerySiklus = () => {
               <img
                 src={siklus.image}
                 alt={siklus.title}
-                className={`w-full h-48 md:h-90 object-cover transition-transform duration-700 ${
+                className={`w-full h-58 object-cover transition-transform duration-700 ${
                   visibleItems.has(index) ? "scale-100" : "scale-110"
                 }`}
               />

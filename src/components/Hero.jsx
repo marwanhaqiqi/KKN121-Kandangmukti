@@ -164,7 +164,7 @@ const Hero = () => {
               }`}
             >
               <img
-                src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/4fa7ce1a-5bee-4954-bd15-3e3377e909c8.png"
+                src="hero.png"
                 alt="Kelompok KKN sedang melakukan kegiatan pengabdian masyarakat"
                 className="w-full max-w-lg mx-auto rounded-2xl shadow-2xl transition-all duration-300 hover:transform hover:scale-105 hover:shadow-3xl"
               />

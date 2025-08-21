@@ -5,10 +5,9 @@ import ProfileDesa from "./components/ProfileDesa";
 import ProgramUnggulan from "./components/ProgramUnggulan";
 import TimKKN from "./components/TimKKN";
 import GallerySiklus from "./components/GallerySiklus";
-import GalleryHarian1 from "./components/GalleryHarian1";
-// import GalleryHarian2 from "./components/GalleryHarian2";
-// import GalleryHarian3 from "./components/GalleryHarian3";
-// import GalleryHarian4 from "./components/GalleryHarian4";
+import GalleryHarian1 from "./components/GalleryHarian/GalleryHarian1";
+import GalleryHarian2 from "./components/GalleryHarian/GalleryHarian2";
+import GalleryHarian3 from "./components/GalleryHarian/GalleryHarian3";
 import DokumenLaporan from "./components/DokumenLaporan";
 import Footer from "./components/Footer";
 import BackToTop from "./components/BackToTop";
@@ -47,23 +46,29 @@ function App() {
           }
         />
 
-        {/* <Route path="/gallery-harian2" element={
-          <>
-            <GalleryHarian2 />
-            <Footer />
-            <BackToTop />
-          </>
-        } /> */}
+        <Route
+          path="/gallery-harian2"
+          element={
+            <>
+              <GalleryHarian2 />
+              <Footer />
+              <BackToTop />
+            </>
+          }
+        />
 
-        {/* <Route path="/gallery-harian3" element={
-          <>
-            <GalleryHarian3 />
-            <Footer />
-            <BackToTop />
-          </>
-        } />
-        
-        <Route path="/gallery-harian4" element={
+        <Route
+          path="/gallery-harian3"
+          element={
+            <>
+              <GalleryHarian3 />
+              <Footer />
+              <BackToTop />
+            </>
+          }
+        />
+
+        {/* <Route path="/gallery-harian4" element={
           <>
             <GalleryHarian4 />
             <Footer />

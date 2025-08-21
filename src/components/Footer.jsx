@@ -17,8 +17,10 @@ const Footer = () => {
   const [columnsVisible, setColumnsVisible] = useState(new Set());
   const [copyrightVisible, setCopyrightVisible] = useState(false);
   const [socialVisible, setSocialVisible] = useState(false);
+  const [hasAnimated, setHasAnimated] = useState(false);
   const columnsRef = useRef([]);
   const copyrightRef = useRef(null);
+  const footerRef = useRef(null);
 
   const socialIcons = {
     instagram: <Instagram className="w-6 h-6" />,
@@ -35,14 +37,19 @@ const Footer = () => {
       }
     } else {
       // Jika di halaman lain, redirect ke home dulu baru scroll
-      navigate("/");
+      navigate("/", { replace: true });
       setTimeout(() => {
         const element = document.querySelector(target);
         if (element) {
           element.scrollIntoView({ behavior: "smooth" });
         }
-      }, 100);
+      }, 150);
     }
+  };
+
+  // Fungsi khusus untuk tombol kembali ke beranda
+  const handleBackToHome = () => {
+    navigate("/", { replace: true });
   };
 
   const navigationItems = [
@@ -54,60 +61,87 @@ const Footer = () => {
     { label: "Laporan PDF", target: "#pdf" },
   ];
 
+  // Reset animation state when location changes
+  useEffect(() => {
+    setColumnsVisible(new Set());
+    setCopyrightVisible(false);
+    setSocialVisible(false);
+    setHasAnimated(false);
+  }, [location.pathname]);
+
+  // Trigger animations manually if footer is already visible
+  const triggerAnimations = () => {
+    if (hasAnimated) return;
+
+    setHasAnimated(true);
+
+    // Animate columns with staggered timing
+    [0, 1, 2].forEach((index) => {
+      setTimeout(() => {
+        setColumnsVisible((prev) => new Set([...prev, index]));
+
+        // Trigger social icons animation for first column
+        if (index === 0) {
+          setTimeout(() => {
+            setSocialVisible(true);
+          }, 600);
+        }
+      }, index * 200);
+    });
+
+    // Animate copyright
+    setTimeout(() => {
+      setCopyrightVisible(true);
+    }, 800);
+  };
+
   useEffect(() => {
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
-            const element = entry.target.getAttribute("data-element");
-            const index = entry.target.getAttribute("data-index");
-
-            if (element === "column" && index !== null) {
-              // Delay untuk efek step-by-step columns
-              setTimeout(
-                () => {
-                  setColumnsVisible(
-                    (prev) => new Set([...prev, parseInt(index)])
-                  );
-
-                  // Trigger social icons animation untuk kolom pertama
-                  if (parseInt(index) === 0) {
-                    setTimeout(() => {
-                      setSocialVisible(true);
-                    }, 600);
-                  }
-                },
-                parseInt(index) * 200
-              );
-            } else if (element === "copyright") {
-              setTimeout(() => {
-                setCopyrightVisible(true);
-              }, 400);
-            }
+            triggerAnimations();
           }
         });
       },
       {
-        threshold: 0.2,
-        rootMargin: "0px 0px -5% 0px",
+        threshold: 0.1, // Reduced threshold for better detection
+        rootMargin: "0px 0px -10% 0px",
       }
     );
 
-    // Observe columns
-    columnsRef.current.forEach((ref) => {
-      if (ref) observer.observe(ref);
-    });
-
-    // Observe copyright
-    if (copyrightRef.current) {
-      observer.observe(copyrightRef.current);
+    // Observe the main footer element
+    if (footerRef.current) {
+      observer.observe(footerRef.current);
     }
 
-    return () => observer.disconnect();
-  }, []);
+    // Fallback: If footer is already in view when component mounts
+    const checkIfInView = () => {
+      if (footerRef.current && !hasAnimated) {
+        const rect = footerRef.current.getBoundingClientRect();
+        const isInView = rect.top < window.innerHeight && rect.bottom > 0;
+
+        if (isInView) {
+          triggerAnimations();
+        }
+      }
+    };
+
+    // Check immediately
+    setTimeout(checkIfInView, 100);
+
+    // Also check on scroll (as fallback)
+    window.addEventListener("scroll", checkIfInView);
+
+    return () => {
+      observer.disconnect();
+      window.removeEventListener("scroll", checkIfInView);
+    };
+  }, [hasAnimated, location.pathname]);
 
   return (
     <footer
+      ref={footerRef}
       id="footer"
       className="bg-gray-800 text-white py-12 overflow-hidden"
     >
@@ -312,7 +346,7 @@ const Footer = () => {
                 }}
               >
                 <button
-                  onClick={() => navigate("/")}
+                  onClick={handleBackToHome}
                   className="px-4 py-2 bg-green-600 hover:bg-green-700 text-white rounded-lg transition-all duration-300 transform hover:scale-105 hover:shadow-lg"
                 >
                   ← Kembali ke Beranda
