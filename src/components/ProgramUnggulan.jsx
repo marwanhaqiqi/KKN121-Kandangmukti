@@ -143,7 +143,7 @@ const ProgramSections = () => {
       date: "28 Juli - 22 Agustus 2025",
     },
     {
-      image: "./FotoProgram/phbs.jpg",
+      image: "./FotoProgram/1.JPG",
       alt: "Perilaku Hidup Bersih dan Sehat di RW 02",
       title: "Perilaku Hidup Bersih dan Sehat (PHBS)",
       description:
@@ -151,20 +151,20 @@ const ProgramSections = () => {
       date: "05 Agustus 2025",
     },
     {
-      image: "./FotoProgram/belom.png",
+      image: "./FotoProgram/ecoenzym.jpeg",
       alt: "Workshop pembuatan ekoenzim ramah lingkungan",
-      title: "Ekoenzim",
+      title: "Eco-Enzyme",
       description:
-        "Pelatihan pembuatan ekoenzim dari limbah organik sebagai solusi ramah lingkungan untuk pembersih alami dan pupuk cair.",
+        "Pelatihan pembuatan ekoenzim di SMK Al-Farisi dari limbah organik sebagai solusi ramah lingkungan untuk pembersih alami dan pupuk cair.",
       date: "20 Agustus 2025",
     },
     {
-      image: "./FotoProgram/belom.png",
+      image: "./FotoProgram/plangsampah.jpg",
       alt: "Pembuatan dan pemasangan plang sampah",
       title: "Plang Sampah",
       description:
         "Inisiatif pemasangan plang penanda tempat sampah untuk meningkatkan kesadaran masyarakat dalam pengelolaan sampah yang baik.",
-      date: "?",
+      date: "23 Agustus 2023",
     },
   ];
 

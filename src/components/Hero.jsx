@@ -81,7 +81,7 @@ const Hero = () => {
       className="relative min-h-screen overflow-hidden"
     >
       {/* Background Video */}
-      <video
+      {/* <video
         autoPlay
         loop
         muted
@@ -90,86 +90,90 @@ const Hero = () => {
       >
         <source src="/background.mp4" type="video/mp4" />
         Your browser does not support the video tag.
-      </video>
+      </video> */}
+
+      <img
+        src="background.jpg"
+        alt="Foto KKN 121"
+        className="absolute top-0 left-0 w-full h-full object-cover z-0"
+      />
 
       {/* Overlay */}
       <div className="absolute inset-0 bg-black/40 z-10"></div>
 
       {/* Content Container */}
-      <div className="relative z-20 min-h-screen flex items-center">
+      <div className="relative z-20 min-h-screen flex items-center justify-center">
         <div className="container mx-auto px-4 py-8">
-          <div className="flex flex-col lg:flex-row items-center gap-12">
-            {/* Text Content - Left Side */}
-            <div className="lg:w-1/2 text-white">
-              {/* Title with scroll animation */}
-              <h2
-                ref={titleRef}
-                className={`text-4xl lg:text-5xl font-bold mb-6 transition-all duration-1000 ease-out ${
-                  isVisible && scrollElements.title
-                    ? "transform translate-y-0 opacity-100"
-                    : "transform translate-y-8 opacity-0"
-                }`}
-              >
-                KKN Sisdamas
-              </h2>
-
-              {/* Description with scroll animation */}
-              <p
-                ref={descriptionRef}
-                className={`text-lg lg:text-xl mb-8 leading-relaxed transition-all duration-1000 ease-out delay-200 ${
-                  isVisible && scrollElements.description
-                    ? "transform translate-y-0 opacity-100"
-                    : "transform translate-y-8 opacity-0"
-                }`}
-              >
-                KKN Sisdamas adalah singkatan dari Kuliah Kerja Nyata Sistem
-                Desa Mandiri dan Sejahtera. Ini adalah model pengabdian kepada
-                masyarakat yang dikembangkan oleh UIN Sunan Gunung Djati
-                Bandung. KKN Sisdamas melibatkan mahasiswa dalam pemberdayaan
-                masyarakat desa melalui berbagai kegiatan, dengan tujuan
-                mewujudkan desa yang mandiri dan sejahtera.
-              </p>
-
-              {/* Buttons with scroll animation */}
-              <div
-                ref={buttonsRef}
-                className={`flex flex-col sm:flex-row gap-4 transition-all duration-1000 ease-out delay-400 ${
-                  isVisible && scrollElements.buttons
-                    ? "transform translate-y-0 opacity-100"
-                    : "transform translate-y-8 opacity-0"
-                }`}
-              >
-                <a
-                  href="#programs"
-                  className="bg-green-600 hover:bg-green-700 text-white px-8 py-3 rounded-lg font-semibold transition-all duration-300 hover:transform hover:scale-105 hover:shadow-lg"
-                >
-                  Lihat Program
-                </a>
-                <a
-                  href="#siklus"
-                  className="bg-transparent border-2 border-white text-white hover:bg-white hover:text-green-600 px-8 py-3 rounded-lg font-semibold transition-all duration-300 hover:transform hover:scale-105 hover:shadow-lg"
-                >
-                  Galeri Foto
-                </a>
-              </div>
-            </div>
-
-            {/* Image - Right Side with scroll animation */}
-            <div
-              ref={imageRef}
-              className={`lg:w-1/2 -mt-10 transition-all duration-1200 ease-out ${
-                isVisible && scrollElements.image
-                  ? "transform translate-x-0 opacity-100 scale-100"
-                  : "transform translate-x-12 opacity-0 scale-95"
+          {/* Centered Text Content */}
+          <div className="text-center text-white/80 max-w-4xl mx-auto">
+            {/* Title with scroll animation */}
+            <h2
+              ref={titleRef}
+              className={`text-4xl lg:text-5xl font-bold mb-6 transition-all duration-1000 ease-out ${
+                isVisible && scrollElements.title
+                  ? "transform translate-y-0 opacity-100"
+                  : "transform translate-y-8 opacity-0"
               }`}
             >
-              <img
-                src="hero.png"
-                alt="Kelompok KKN sedang melakukan kegiatan pengabdian masyarakat"
-                className="w-full max-w-lg mx-auto rounded-2xl shadow-2xl transition-all duration-300 hover:transform hover:scale-105 hover:shadow-3xl"
-              />
+              KKN Sisdamas
+            </h2>
+
+            {/* Description with scroll animation */}
+            <p
+              ref={descriptionRef}
+              className={`text-lg lg:text-xl mb-8 leading-relaxed transition-all duration-1000 ease-out delay-200 ${
+                isVisible && scrollElements.description
+                  ? "transform translate-y-0 opacity-100"
+                  : "transform translate-y-8 opacity-0"
+              }`}
+            >
+              KKN Sisdamas adalah singkatan dari Kuliah Kerja Nyata Sistem Desa
+              Mandiri dan Sejahtera. Ini adalah model pengabdian kepada
+              masyarakat yang dikembangkan oleh UIN Sunan Gunung Djati Bandung.
+              KKN Sisdamas melibatkan mahasiswa dalam pemberdayaan masyarakat
+              desa melalui berbagai kegiatan, dengan tujuan mewujudkan desa yang
+              mandiri dan sejahtera.
+            </p>
+
+            {/* Buttons with scroll animation */}
+            <div
+              ref={buttonsRef}
+              className={`flex flex-col sm:flex-row gap-4 justify-center transition-all duration-1000 ease-out delay-400 ${
+                isVisible && scrollElements.buttons
+                  ? "transform translate-y-0 opacity-100"
+                  : "transform translate-y-8 opacity-0"
+              }`}
+            >
+              <a
+                href="#programs"
+                className="bg-green-600 hover:bg-green-700 text-white px-8 py-3 rounded-lg font-semibold transition-all duration-300 hover:transform hover:scale-105 hover:shadow-lg"
+              >
+                Lihat Program
+              </a>
+              <a
+                href="#siklus"
+                className="bg-transparent border-2 border-white text-white hover:bg-white hover:text-green-600 px-8 py-3 rounded-lg font-semibold transition-all duration-300 hover:transform hover:scale-105 hover:shadow-lg"
+              >
+                Galeri Foto
+              </a>
             </div>
           </div>
+
+          {/* Image - Right Side with scroll animation */}
+          {/* <div
+            ref={imageRef}
+            className={`lg:w-1/2 -mt-10 transition-all duration-1200 ease-out ${
+              isVisible && scrollElements.image
+                ? "transform translate-x-0 opacity-100 scale-100"
+                : "transform translate-x-12 opacity-0 scale-95"
+            }`}
+          >
+            <img
+              src="hero.png"
+              alt="Kelompok 121"
+              className="w-full max-w-lg mx-auto rounded-2xl shadow-2xl transition-all duration-300 hover:transform hover:scale-105 hover:shadow-3xl"
+            />
+          </div> */}
         </div>
       </div>
 

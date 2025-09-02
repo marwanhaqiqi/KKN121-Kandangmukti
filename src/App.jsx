@@ -8,6 +8,7 @@ import GallerySiklus from "./components/GallerySiklus";
 import GalleryHarian1 from "./components/GalleryHarian/GalleryHarian1";
 import GalleryHarian2 from "./components/GalleryHarian/GalleryHarian2";
 import GalleryHarian3 from "./components/GalleryHarian/GalleryHarian3";
+import GalleryHarian4 from "./components/GalleryHarian/GalleryHarian4";
 import DokumenLaporan from "./components/DokumenLaporan";
 import Footer from "./components/Footer";
 import BackToTop from "./components/BackToTop";
@@ -68,13 +69,16 @@ function App() {
           }
         />
 
-        {/* <Route path="/gallery-harian4" element={
-          <>
-            <GalleryHarian4 />
-            <Footer />
-            <BackToTop />
-          </>
-        } /> */}
+        <Route
+          path="/gallery-harian4"
+          element={
+            <>
+              <GalleryHarian4 />
+              <Footer />
+              <BackToTop />
+            </>
+          }
+        />
 
         {/* 404 Page - Optional */}
         <Route

@@ -6,7 +6,7 @@ const siklusData = [
     id: 1,
     title: "Siklus 1",
     description:
-      "Tim KKN SISDAMAS 121 melaksanakan kegiatan pendidikan, keagamaan, dan kesehatan lingkungan di Desa Kandang Mukti. Kegiatan meliputi mengajar PJOK di SDN 01 Kandangmukti, mengajar ngaji di Madrasah Al-Ihya, dan rembug warga untuk membahas program kesehatan lingkungan.",
+      "Tim KKN SISDAMAS 121 Desa Kandangmukti melaksanakan kegiatan pendidikan, keagamaan, dan kesehatan lingkungan di Desa Kandang Mukti. Kegiatan meliputi mengajar PJOK di SDN 01 Kandangmukti, mengajar ngaji di Madrasah Al-Ihya, dan rembug warga untuk membahas program kesehatan lingkungan.",
     image: "./BGSiklus/BG1.png",
     link: "/gallery-harian1",
   },
@@ -22,7 +22,7 @@ const siklusData = [
     id: 3,
     title: "Siklus 3",
     description:
-      "Siklus 3 berisi kegiatan penutupan KKN, pameran hasil kerja, serta evaluasi program bersama warga.",
+      "Tim KKN SISDAMAS 121 Desa Kandangmukti melaksanakan program pendidikan, kesehatan, sosial, dan pemberdayaan masyarakat untuk mendukung pengetahuan, kebersihan, serta kemandirian desa.",
     image: "./BGSiklus/BG3.png",
     link: "/gallery-harian3",
   },
@@ -30,8 +30,8 @@ const siklusData = [
     id: 4,
     title: "Siklus 4",
     description:
-      "Siklus 4 merupakan evaluasi dan dokumentasi akhir dari seluruh program KKN yang telah dilaksanakan di Desa Kandangmukti.",
-    image: "./FotoProgram/belom.png",
+      "KKN SISDAMAS 121 Desa Kandang Mukti berfokus pada perayaan HUT RI ke-78 melalui karnaval, lomba, dan kegiatan sosial, serta ditutup dengan pembagian hadiah dan penayangan after movie.",
+    image: "./BGSiklus/BG4.png",
     link: "/gallery-harian4",
   },
 ];

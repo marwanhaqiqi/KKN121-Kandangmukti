@@ -86,18 +86,14 @@ const GalleryItem = ({
 };
 
 const GalleryHarian1 = () => {
-  const [currentIndex11, setCurrentIndex11] = useState(0);
-  const [currentIndex12, setCurrentIndex12] = useState(0);
-  const [currentIndex13, setCurrentIndex13] = useState(0);
-  const [currentIndex14, setCurrentIndex14] = useState(0);
-  const [currentIndex15, setCurrentIndex15] = useState(0);
-  const [currentIndex16, setCurrentIndex16] = useState(0);
-  const [isPlaying11, setIsPlaying11] = useState(true);
-  const [isPlaying12, setIsPlaying12] = useState(true);
-  const [isPlaying13, setIsPlaying13] = useState(true);
-  const [isPlaying14, setIsPlaying14] = useState(true);
-  const [isPlaying15, setIsPlaying15] = useState(true);
-  const [isPlaying16, setIsPlaying16] = useState(true);
+  const [currentIndex17, setCurrentIndex17] = useState(0);
+  const [currentIndex18, setCurrentIndex18] = useState(0);
+  const [currentIndex19, setCurrentIndex19] = useState(0);
+  const [currentIndex20, setCurrentIndex20] = useState(0);
+  const [isPlaying17, setIsPlaying17] = useState(true);
+  const [isPlaying18, setIsPlaying18] = useState(true);
+  const [isPlaying19, setIsPlaying19] = useState(true);
+  const [isPlaying20, setIsPlaying20] = useState(true);
 
   // Animation states
   const [headerVisible, setHeaderVisible] = useState(false);
@@ -184,187 +180,132 @@ const GalleryHarian1 = () => {
 
   const galleryItems = [
     {
-      title: "JUMSIH BERSAMA RW 01",
-      image: "./FotoDaySiklus2/Day11/1.JPG",
-      alt: "Kegiatan jumsih",
+      title: "PENYULUHAN KE POSYANDU",
+      image: "./FotoDaySiklus3/Day17/1.JPG",
+      alt: "phbs",
       description:
-        "Kegiatan Jum’at Bersih (Jumsih) bersama warga RW 01 menjadi wujud kepedulian terhadap kebersihan lingkungan sekitar. Melalui gotong royong, mahasiswa KKN SISDAMAS 121 dan masyarakat bekerja sama membersihkan area sekitar demi menciptakan lingkungan yang sehat, nyaman, dan asri.",
+        "Mahasiswa KKN SISDAMAS 121 Desa Kandang Mukti melaksanakan penyuluhan di Posyandu RW 02 sebagai bentuk pengabdian kepada masyarakat, dengan memberikan edukasi tentang kesehatan ibu dan anak, gizi seimbang, serta pola hidup bersih dan sehat yang disampaikan melalui diskusi interaktif dan media edukasi sederhana.",
     },
     {
-      title: "KBM DI SDN 01 KANDANGMUKTI",
-      image: "./FotoDaySiklus2/Day11/2.JPG",
-      alt: "KBM",
+      title: "MENGUNJUNGI UMKM",
+      image: "./FotoDaySiklus3/Day17/2.jpg",
+      alt: "umkm",
       description:
-        "Mahasiswa KKN SISDAMAS 121 turut serta dalam kegiatan Belajar Mengajar di SDN 01 Kandangmukti. Melalui kegiatan ini, mahasiswa membantu guru dalam menyampaikan materi pelajaran kepada siswa, sekaligus memberikan pengalaman belajar yang interaktif dan menyenangkan.",
+        "Mahasiswa KKN SISDAMAS 121 Desa Kandang Mukti melakukan kunjungan ke UMKM lokal di wilayah desa sebagai bentuk dukungan terhadap pengembangan usaha masyarakat. Kegiatan ini bertujuan untuk mengenal lebih dekat proses produksi, mendengarkan tantangan yang dihadapi pelaku usaha, serta memberikan masukan yang dapat membantu peningkatan kualitas dan keberlanjutan usaha UMKM setempat.",
     },
     {
-      title: "BIMBEL BAHASA INGGRIS",
-      image: "./FotoDaySiklus2/Day11/3.JPG",
-      alt: "Bimbel",
+      title: "PENGAJIAN",
+      image: "./FotoDaySiklus3/Day17/3.JPG",
+      alt: "ngaji",
       description:
-        "Kegiatan Bimbingan Belajar Bahasa Inggris bersama anak-anak menjadi salah satu program KKN SISDAMAS 121 di Desa Kandangmukti. Melalui bimbingan ini, mahasiswa membantu anak-anak dalam memahami kosakata, tata bahasa, serta praktik percakapan sederhana. Suasana belajar dibuat santai dan menyenangkan sehingga anak-anak lebih bersemangat dalam mempelajari Bahasa Inggris.",
-    },
-    {
-      title: "KBM DI MDTA AL-IHYA",
-      image: "./FotoDaySiklus2/Day11/4.JPG",
-      alt: "KBM",
-      description:
-        "Kegiatan Belajar Mengajar di Madrasah Diniyah Takmiliyah Al-Ihya menjadi salah satu bentuk pengabdian mahasiswa KKN SISDAMAS 121 di Desa Kandangmukti. Dalam kegiatan ini, mahasiswa turut serta membantu proses pembelajaran agama, seperti membaca Al-Qur’an, akhlak, serta pengetahuan dasar keislaman. Anak-anak terlihat antusias dan bersemangat dalam mengikuti pelajaran yang dibawakan dengan metode interaktif.",
+        "Mahasiswa KKN SISDAMAS 121 Desa Kandang Mukti turut berpartisipasi dalam kegiatan pengajian malam hari di Masjid Al-Manshur sebagai sarana mempererat silaturahmi dengan masyarakat sekaligus meningkatkan keimanan dan pemahaman keagamaan. Melalui kegiatan ini, diharapkan tercipta kebersamaan antara mahasiswa dan warga dalam membangun kehidupan yang religius serta harmonis di lingkungan desa.",
     },
   ];
 
   const galleryItems2 = [
     {
-      title: "BRIEFING LOMBA",
-      image: "./FotoDaySiklus2/Day12/1.JPG",
-      alt: "Lomba",
+      title: "BIMBEL",
+      image: "./FotoDaySiklus3/Day18/1.JPG",
+      alt: "bimbel",
       description:
-        "Kegiatan briefing ini dilaksanakan sebagai persiapan untuk Lomba Bahasa Tunas Ibu se-Kecamatan Leles. Mahasiswa KKN SISDAMAS 121 Desa Kandangmukti bersama pihak terkait melakukan diskusi intensif mengenai teknis perlombaan, pembagian tugas, serta strategi pelaksanaan acara agar berjalan lancar.",
+        "Mahasiswa KKN SISDAMAS 121 Desa Kandang Mukti rutin mengadakan kegiatan bimbingan belajar (bimbel) di Posko KKN 121 sebagai upaya mendukung peningkatan kualitas pendidikan anak-anak di desa. Melalui kegiatan ini, mahasiswa membantu siswa dalam memahami pelajaran sekolah, memberikan motivasi belajar, serta menumbuhkan semangat dan kepercayaan diri anak-anak agar lebih siap menghadapi tantangan pendidikan di masa depan.",
     },
     {
-      title: "OBSERVASI BUMDES",
-      image: "./FotoDaySiklus2/Day12/2.jpeg",
-      alt: "Bumdes",
+      title: "KBM DI MDTA AL-IHYA",
+      image: "./FotoDaySiklus3/Day18/2.JPG",
+      alt: "madrasah",
       description:
-        "Kegiatan observasi ini dilakukan bersama pihak Bumdes untuk membahas potensi, perencanaan, serta pengelolaan usaha desa. Fokus utama diskusi mencakup pengembangan kandang ayam petelur dan sistem budidaya ikan (Budisys) yang sedang dijalankan.",
-    },
-    {
-      title: "DISKUSI TANAMAN OBAT BERSAMA IBU PKK RW 06",
-      image: "./FotoDaySiklus2/Day12/3.jpeg",
-      alt: "Diskusi",
-      description:
-        "Kegiatan ini merupakan diskusi bersama Ibu-ibu PKK RW 06 terkait rencana pembuatan Taman Tanaman Obat. Melalui pertemuan ini, mahasiswa KKN SISDAMAS 121 Desa Kandangmukti bertukar gagasan mengenai jenis tanaman obat yang dapat dibudidayakan, manfaatnya bagi kesehatan keluarga, serta cara perawatannya.",
+        "Mahasiswa KKN SISDAMAS 121 Desa Kandang Mukti melaksanakan kegiatan belajar mengajar rutin di Madrasah Diniyah Takmiliyah Al-Ihya sebagai bentuk kontribusi dalam mendukung pendidikan keagamaan anak-anak. Melalui kegiatan ini, mahasiswa membantu proses pembelajaran, memberikan motivasi, serta menanamkan nilai-nilai religius agar para siswa semakin semangat dalam menuntut ilmu dan berakhlak mulia.",
     },
   ];
 
   const galleryItems3 = [
     {
-      title: "EKSEKUSI PEMBUATAN TAMAN TANAMAN OBAT",
-      image: "./FotoDaySiklus2/Day13/1.png",
-      alt: "Kegiatan Kunjungan",
+      title: "JUM'AT BERSIH",
+      image: "./FotoDaySiklus3/Day19/1.JPG",
+      alt: "jumsih",
       description:
-        "Setelah melalui tahap diskusi, mahasiswa KKN SISDAMAS 121 Desa Kandangmukti melaksanakan eksekusi pembuatan Taman Tanaman Obat. Kegiatan ini dilakukan di area Kantor Desa Kandangmukti dengan memanfaatkan bahan sederhana seperti bambu dan polybag.",
+        "Mahasiswa KKN SISDAMAS 121 Desa Kandang Mukti turut berpartisipasi dalam kegiatan Jumat Bersih bersama warga sebagai bentuk kepedulian terhadap kebersihan dan kenyamanan lingkungan. Melalui kegiatan gotong royong ini, mahasiswa dan masyarakat bergandengan tangan membersihkan area sekitar desa, sekaligus menumbuhkan semangat kebersamaan serta kesadaran pentingnya menjaga lingkungan yang sehat dan asri.",
+    },
+    {
+      title: "KUNJUNGAN PRODUKSI BENDERA",
+      image: "./FotoDaySiklus3/Day19/2.png",
+      alt: "kunjungan",
+      description:
+        "Mahasiswa KKN SISDAMAS 121 Desa Kandang Mukti melakukan kunjungan ke lokasi produksi bendera sebagai bentuk observasi dan dukungan terhadap persiapan menyambut Hari Kemerdekaan 17 Agustus. Kegiatan ini tidak hanya bertujuan untuk mengenal proses produksi bendera, tetapi juga sebagai wujud apresiasi terhadap pelaku usaha lokal yang berkontribusi dalam memenuhi kebutuhan masyarakat menjelang perayaan kemerdekaan.",
+    },
+    {
+      title: "RAPAT KOORDINASI 17 AGUSTUS",
+      image: "./FotoDaySiklus3/Day19/3.png",
+      alt: "rapat",
+      description:
+        "Mahasiswa KKN SISDAMAS 121 Desa Kandang Mukti mengikuti rapat koordinasi bersama Kepala Desa dan perangkat desa dalam rangka membahas persiapan kegiatan peringatan Hari Kemerdekaan 17 Agustus. Diskusi ini menjadi wadah untuk menyusun agenda, membagi peran, serta memastikan jalannya rangkaian acara berjalan lancar dengan melibatkan partisipasi aktif masyarakat.",
     },
   ];
-
   const galleryItems4 = [
     {
-      title: "VERIFIKASI DATA KE KANTOR DESA",
-      image: "./FotoDaySiklus2/Day14/1.JPG",
-      alt: "Verif Data",
+      title: "SURVEY LOKASI PERLOMBAAN",
+      image: "./FotoDaySiklus3/Day20/1.JPG",
+      alt: "survey",
       description:
-        "Mahasiswa KKN SISDAMAS 121 Desa Kandangmukti melakukan verifikasi data ke Kantor Desa sebagai bagian dari proses pemetaan desa pada siklus 2. Kegiatan ini bertujuan untuk memastikan keakuratan data yang akan digunakan dalam perencanaan program desa sehingga hasil pemetaan dapat lebih tepat sasaran dan bermanfaat bagi masyarakat.",
+        "Mahasiswa KKN SISDAMAS 121 Desa Kandang Mukti melakukan survei lapangan untuk persiapan perlombaan dalam rangka peringatan Hari Kemerdekaan 17 Agustus. Kegiatan ini bertujuan untuk memastikan kondisi lokasi, menentukan area kegiatan, serta mempersiapkan kebutuhan teknis agar seluruh rangkaian perlombaan dapat berjalan lancar dan meriah bersama masyarakat desa.",
     },
     {
-      title: "SOSIALISASI DAN PENYULUHAN PEMETAAN WILAYAH DI DUSUN 02",
-      image: "./FotoDaySiklus2/Day14/2.JPG",
-      alt: "Kegiatan Pemeteaan",
+      title: "DISKUSI PROGRAM KERJA",
+      image: "./FotoDaySiklus3/Day20/2.JPG",
+      alt: "diskusi",
       description:
-        "Mahasiswa KKN SISDAMAS 121 Desa Kandangmukti melaksanakan sosialisasi door to door kepada warga Dusun 02. Kegiatan ini bertujuan untuk melakukan verifikasi dan aktualisasi data pemetaan wilayah. Dengan adanya penyuluhan ini, masyarakat dapat memahami pentingnya data yang akurat dalam mendukung pembangunan desa yang lebih terarah dan sesuai kebutuhan warga.",
-    },
-  ];
-
-  const galleryItems5 = [
-    {
-      title: "PENYULUHAN PHBS DI POSYANDU RW 01",
-      image: "./FotoDaySiklus2/Day15/1.JPG",
-      alt: "Kegiatan PHBS",
-      description:
-        "Mahasiswa KKN SISDAMAS 121 Desa Kandangmukti melaksanakan kegiatan sosialisasi dan penyuluhan mengenai Perilaku Hidup Bersih dan Sehat (PHBS) di Posyandu RW 01. Kegiatan ini bertujuan untuk meningkatkan kesadaran masyarakat, khususnya para ibu dan anak, tentang pentingnya menjaga kebersihan diri dan lingkungan guna menciptakan pola hidup yang lebih sehat dan mencegah berbagai penyakit.",
+        "Mahasiswa KKN SISDAMAS 121 Desa Kandang Mukti melaksanakan diskusi bersama kelompok KKN Uniga untuk membahas program kerja yang akan dijalankan. Melalui kegiatan ini, kedua kelompok dapat saling bertukar ide, menyusun strategi, dan berkoordinasi agar setiap program dapat terlaksana dengan baik serta memberikan manfaat yang lebih optimal bagi masyarakat desa.",
     },
     {
-      title: "PENDAMPINGAN PESERTA LOMBA FESTIVAL TUNAS BAHASA IBU 2025",
-      image: "./FotoDaySiklus2/Day15/2.jpeg",
-      alt: "Kegiatan Lomba",
+      title: "DISKUSI 17 AGUSTUS",
+      image: "./FotoDaySiklus3/Day20/3.JPG",
+      alt: "diskusi",
       description:
-        "Mahasiswa KKN SISDAMAS 121 Desa Kandangmukti mendampingi siswa SDN 01 Kandangmukti dalam mengikuti berbagai cabang perlombaan pada Festival Tunas Bahasa Ibu (FTBI) 2025 tingkat Kecamatan Leles. Kegiatan ini bertujuan untuk memberikan dukungan, bimbingan, serta motivasi agar para siswa lebih percaya diri dalam menampilkan kemampuan berbahasa dan berkarya, sekaligus menumbuhkan kecintaan terhadap bahasa ibu sebagai identitas budaya serta memperkuat semangat kompetisi sehat antar sekolah.",
-    },
-    {
-      title: "KBM DI MDTA AL-IHYA",
-      image: "./FotoDaySiklus2/Day15/3.JPG",
-      alt: "Kegiatan Mengaji",
-      description:
-        "Mahasiswa KKN SISDAMAS 121 Desa Kandangmukti turut serta dalam kegiatan belajar mengajar rutin di Madrasah Diniyah Takmiliyah Al-Ihya. Kegiatan ini bertujuan untuk mendukung proses pembelajaran agama bagi para santri, khususnya dalam memperdalam ilmu Al-Qur’an, fiqih, serta akhlak.",
-    },
-  ];
-
-  const galleryItems6 = [
-    {
-      title: "KBM MAPEL PJOK PRAKTEK DI SDN 01 KANDANGMUKTI",
-      image: "./FotoDaySiklus2/Day16/1.JPG",
-      alt: "Kegiatan ngajar",
-      description:
-        "Mahasiswa KKN SISDAMAS 121 Desa Kandangmukti melaksanakan kegiatan pembelajaran praktik mata pelajaran PJOK bersama siswa SDN 01 Kandangmukti. Kegiatan ini tidak hanya melatih keterampilan fisik dan motorik anak, tetapi juga menumbuhkan semangat kebersamaan, sportivitas, serta gaya hidup aktif dan sehat.",
-    },
-    {
-      title: "KBM DI MDTA AL-IHYA",
-      image: "./FotoDaySiklus2/Day16/2.JPG",
-      alt: "Kegiatan Mengaji",
-      description:
-        "Mahasiswa KKN SISDAMAS 121 Desa Kandangmukti ikut serta dalam kegiatan pembelajaran rutin di Madrasah Diniyah Takmiliyah Al-Ihya dengan mendampingi santri dalam membaca, menulis, serta memahami pelajaran agama.",
+        "KKN SISDAMAS 121 melaksanakan pelatihan UMKM, gotong royong, dan penghijauan di Desa Kandang Mukti. Kegiatan ini bertujuan meningkatkan kemandirian ekonomi, menjaga kebersihan lingkungan, dan menciptakan ruang hijau desa. Selain itu, tim juga mengikuti rapat persiapan perayaan 17 Agustus bersama warga RW 1 untuk mempererat kebersamaan. Seluruh kegiatan berjalan lancar dengan partisipasi aktif masyarakat.",
     },
   ];
 
   // Auto-slide functions
   useEffect(() => {
-    if (!isPlaying11) return;
+    if (!isPlaying17) return;
     const interval = setInterval(() => {
-      setCurrentIndex11((prev) =>
+      setCurrentIndex17((prev) =>
         prev === galleryItems.length - 1 ? 0 : prev + 1
       );
     }, 4000);
     return () => clearInterval(interval);
-  }, [isPlaying11, galleryItems.length]);
+  }, [isPlaying17, galleryItems.length]);
 
   useEffect(() => {
-    if (!isPlaying12) return;
+    if (!isPlaying18) return;
     const interval = setInterval(() => {
-      setCurrentIndex12((prev) =>
+      setCurrentIndex18((prev) =>
         prev === galleryItems2.length - 1 ? 0 : prev + 1
       );
     }, 4000);
     return () => clearInterval(interval);
-  }, [isPlaying12, galleryItems2.length]);
+  }, [isPlaying18, galleryItems2.length]);
 
   useEffect(() => {
-    if (!isPlaying13) return;
+    if (!isPlaying19) return;
     const interval = setInterval(() => {
-      setCurrentIndex13((prev) =>
+      setCurrentIndex19((prev) =>
         prev === galleryItems3.length - 1 ? 0 : prev + 1
       );
     }, 4000);
     return () => clearInterval(interval);
-  }, [isPlaying13, galleryItems3.length]);
+  }, [isPlaying19, galleryItems3.length]);
 
   useEffect(() => {
-    if (!isPlaying14) return;
+    if (!isPlaying20) return;
     const interval = setInterval(() => {
-      setCurrentIndex14((prev) =>
+      setCurrentIndex20((prev) =>
         prev === galleryItems4.length - 1 ? 0 : prev + 1
       );
     }, 4000);
     return () => clearInterval(interval);
-  }, [isPlaying14, galleryItems4.length]);
-
-  useEffect(() => {
-    if (!isPlaying15) return;
-    const interval = setInterval(() => {
-      setCurrentIndex15((prev) =>
-        prev === galleryItems5.length - 1 ? 0 : prev + 1
-      );
-    }, 4000);
-    return () => clearInterval(interval);
-  }, [isPlaying15, galleryItems5.length]);
-
-  useEffect(() => {
-    if (!isPlaying16) return;
-    const interval = setInterval(() => {
-      setCurrentIndex16((prev) =>
-        prev === galleryItems6.length - 1 ? 0 : prev + 1
-      );
-    }, 4000);
-    return () => clearInterval(interval);
-  }, [isPlaying16, galleryItems6.length]);
+  }, [isPlaying20, galleryItems4.length]);
 
   // Render single photo with step-by-step animation
   const renderSinglePhoto = (items, day, sectionIndex) => {
@@ -574,7 +515,7 @@ const GalleryHarian1 = () => {
               transitionDelay: headerVisible ? "200ms" : "0ms",
             }}
           >
-            Galeri Kegiatan Harian Siklus 2
+            Galeri Kegiatan Harian Siklus 3
           </h2>
           <hr
             className={`w-24 mx-auto my-4 border-t-2 border-green-600 transition-all duration-700 transform ${
@@ -594,8 +535,8 @@ const GalleryHarian1 = () => {
               transitionDelay: headerVisible ? "600ms" : "0ms",
             }}
           >
-            Dokumentasi harian kegiatan KKN di Siklus 2 dari hari ke-11 sampai
-            hari ke-16 di Desa Kandangmukti.
+            Dokumentasi harian kegiatan KKN di Siklus 3 dari hari ke-17 sampai
+            hari ke-20 di Desa Kandangmukti.
           </p>
         </div>
 
@@ -603,54 +544,42 @@ const GalleryHarian1 = () => {
         <div className="space-y-12">
           {renderCarousel(
             galleryItems,
-            currentIndex11,
-            setCurrentIndex11,
-            isPlaying11,
-            () => setIsPlaying11(!isPlaying11),
-            "Day 11",
+            currentIndex17,
+            setCurrentIndex17,
+            isPlaying17,
+            () => setIsPlaying17(!isPlaying17),
+            "Day 17",
             0
           )}
 
           {renderCarousel(
             galleryItems2,
-            currentIndex12,
-            setCurrentIndex12,
-            isPlaying12,
-            () => setIsPlaying12(!isPlaying12),
-            "Day 12",
+            currentIndex18,
+            setCurrentIndex18,
+            isPlaying18,
+            () => setIsPlaying18(!isPlaying18),
+            "Day 18",
             1
           )}
 
-          {renderSinglePhoto(galleryItems3, "Day 13", 2)}
+          {renderCarousel(
+            galleryItems3,
+            currentIndex19,
+            setCurrentIndex19,
+            isPlaying19,
+            () => setIsPlaying19(!isPlaying19),
+            "Day 19",
+            2
+          )}
 
           {renderCarousel(
             galleryItems4,
-            currentIndex14,
-            setCurrentIndex14,
-            isPlaying14,
-            () => setIsPlaying14(!isPlaying14),
-            "Day 14",
+            currentIndex20,
+            setCurrentIndex20,
+            isPlaying20,
+            () => setIsPlaying20(!isPlaying20),
+            "Day 20",
             3
-          )}
-
-          {renderCarousel(
-            galleryItems5,
-            currentIndex15,
-            setCurrentIndex15,
-            isPlaying15,
-            () => setIsPlaying15(!isPlaying15),
-            "Day 15",
-            4
-          )}
-
-          {renderCarousel(
-            galleryItems6,
-            currentIndex16,
-            setCurrentIndex16,
-            isPlaying16,
-            () => setIsPlaying16(!isPlaying16),
-            "Day 16",
-            5
           )}
         </div>
       </div>

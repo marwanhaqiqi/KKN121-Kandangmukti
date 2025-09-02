@@ -336,9 +336,9 @@ const TimKKN = () => {
     alt: "Foto Dosen Pembimbing Lapangan KKN",
     name: "Dr. H. Dendi Yuda S.,M.Ag.",
     title: "Dosen Pembimbing Lapangan",
-    nip: "198501012010121001",
-    faculty: "Fakultas Tarbiyah dan Keguruan",
-    expertise: "Pendidikan dan Pengembangan Masyarakat",
+    nip: "197403122001121005",
+    faculty: "Fakultas Adab dan Humaniora",
+    expertise: "Bahasa dan Sastra Arab",
   };
 
   const teamMembers = [
@@ -400,7 +400,8 @@ const TimKKN = () => {
       faculty: "Fakultas Ushuluddin",
       major: "Ilmu Hadist",
       igUrl: "https://instagram.com/saffaulya",
-      logbookUrl: "https://example.com/logbook/saffa",
+      logbookUrl:
+        "https://docs.google.com/document/d/1UkLWyzkTQb5paB7IuZsC2IrbKpd8THdO/edit?usp=drive_link&ouid=103285805950881963271&rtpof=true&sd=true",
     },
     {
       image: "./Profile/1.png",
@@ -430,7 +431,8 @@ const TimKKN = () => {
       faculty: "Fakultas Sains dan Teknologi",
       major: "Teknik Informatika",
       igUrl: "https://instagram.com/marwansyah_003",
-      logbookUrl: "https://example.com/logbook/marwan",
+      logbookUrl:
+        "https://docs.google.com/document/d/10EFnWZBip6cdcF5NfKRLDiRs-HmQ0779WIFm_Y7Rx1I/edit?usp=drive_link",
     },
     {
       image: "./Profile/9.png",
