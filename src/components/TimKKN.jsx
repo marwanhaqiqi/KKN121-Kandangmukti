@@ -350,7 +350,8 @@ const TimKKN = () => {
       faculty: "Fakultas Dakwah dan Komunikasi",
       major: "Ilmu Komunikasi Jurnalistik",
       igUrl: "https://instagram.com/palahswnd",
-      logbookUrl: "https://example.com/logbook/palah",
+      logbookUrl:
+        "https://docs.google.com/document/d/1kOVbFe4aitQidrUv7ksjVahztFuZ4s_y/edit?usp=drive_link&ouid=103285805950881963271&rtpof=true&sd=true",
     },
     {
       image: "./Profile/14.png",
@@ -360,7 +361,8 @@ const TimKKN = () => {
       faculty: "Fakultas Ekonomi dan Bisnis Islam",
       major: "Manajemen",
       igUrl: "https://instagram.com/salmasyfad",
-      logbookUrl: "https://example.com/logbook/salma",
+      logbookUrl:
+        "https://docs.google.com/document/d/1ysOvOUQp80KXucMRrVEafARhYVDG6Z_f/edit?usp=sharing&ouid=106622004405671835543&rtpof=true&sd=true",
     },
     {
       image: "./Profile/13.png",
@@ -370,7 +372,8 @@ const TimKKN = () => {
       faculty: "Fakultas Ilmu Sosial dan Ilmu Politik",
       major: "Administrasi Publik",
       igUrl: "https://instagram.com/wildatsalisaa__",
-      logbookUrl: "https://example.com/logbook/wilda",
+      logbookUrl:
+        "https://docs.google.com/document/d/1YaGenS3DGPfFeXcpRel5zjmKgpy7Rna8/edit?usp=sharing&ouid=103285805950881963271&rtpof=true&sd=true",
     },
     {
       image: "./Profile/2.png",
@@ -380,7 +383,8 @@ const TimKKN = () => {
       faculty: "Fakultas Tarbiyah dan Keguruan",
       major: "Tadris Bahasa Indonesia",
       igUrl: "https://instagram.com/rayazki",
-      logbookUrl: "https://example.com/logbook/katlya",
+      logbookUrl:
+        "https://docs.google.com/document/d/1vDwWDe_CbB6C3qcBeKjCT9zSBROlDSL-/edit?usp=sharing&ouid=103285805950881963271&rtpof=true&sd=true",
     },
     {
       image: "./Profile/4.png",
@@ -390,7 +394,8 @@ const TimKKN = () => {
       faculty: "Fakultas Tarbiyah dan Keguruan",
       major: "Pendidikan Agama Islam",
       igUrl: "https://instagram.com/inabilwetrust",
-      logbookUrl: "https://example.com/logbook/syhadad",
+      logbookUrl:
+        "https://docs.google.com/document/d/1oWSwlLdWx_bzJSheTvJsJ9u_dG5-O8zT/edit?usp=sharing&ouid=103285805950881963271&rtpof=true&sd=true",
     },
     {
       image: "./Profile/3.png",
@@ -411,7 +416,8 @@ const TimKKN = () => {
       faculty: "Fakultas Syari'ah dan Hukum",
       major: "Perbandingan Madzhab dan Hukum",
       igUrl: "https://instagram.com/abdichullo",
-      logbookUrl: "https://example.com/logbook/abdi",
+      logbookUrl:
+        "https://docs.google.com/document/d/1bMQvNENCzDzTSBnvy5DlI_1JhbrMoHaD/edit?usp=sharing&ouid=106622004405671835543&rtpof=true&sd=true",
     },
     {
       image: "./Profile/11.png",
@@ -421,7 +427,8 @@ const TimKKN = () => {
       faculty: "Fakultas Ushuluddin",
       major: "Studi Agama-Agama",
       igUrl: "https://instagram.com/aakhdan_rvw",
-      logbookUrl: "https://example.com/logbook/akhdan",
+      logbookUrl:
+        "https://docs.google.com/document/d/151IkI_OU0BhaFTbPnVwUHuZwCg_ojayZ/edit?usp=sharing&ouid=103285805950881963271&rtpof=true&sd=true",
     },
     {
       image: "./Profile/12.png",
@@ -432,7 +439,7 @@ const TimKKN = () => {
       major: "Teknik Informatika",
       igUrl: "https://instagram.com/marwansyah_003",
       logbookUrl:
-        "https://docs.google.com/document/d/10EFnWZBip6cdcF5NfKRLDiRs-HmQ0779WIFm_Y7Rx1I/edit?usp=drive_link",
+        "https://docs.google.com/document/d/10EFnWZBip6cdcF5NfKRLDiRs-HmQ0779WIFm_Y7Rx1I/edit?usp=sharing",
     },
     {
       image: "./Profile/9.png",
@@ -442,7 +449,8 @@ const TimKKN = () => {
       faculty: "Fakultas Tarbiyah dan Keguruan ",
       major: "Pendidikan Bahasa Inggris",
       igUrl: "https://instagram.com/simply.naylaa_",
-      logbookUrl: "https://example.com/logbook/naila",
+      logbookUrl:
+        "https://docs.google.com/document/d/120GOi7VMiHjPy-rq2_KAl_TXXwh0dlOL/edit?usp=sharing&ouid=106622004405671835543&rtpof=true&sd=true",
     },
     {
       image: "./Profile/10.png",
@@ -452,7 +460,8 @@ const TimKKN = () => {
       faculty: "Fakultas Dakwah dan Komunikasi",
       major: "Bimbingan Konseling Islam",
       igUrl: "https://instagram.com/yuliathetic",
-      logbookUrl: "https://example.com/logbook/yulia",
+      logbookUrl:
+        "https://docs.google.com/document/d/1355uTAIh3cuU9vKC4kHSXMyfLQHEMTJIUX5CTZpnpgI/edit?usp=sharing",
     },
     {
       image: "./Profile/8.png",
@@ -462,7 +471,8 @@ const TimKKN = () => {
       faculty: "Fakultas Ekonomi dan Bisnis Islam",
       major: "Manajemen Keuangan Syari'ah",
       igUrl: "https://instagram.com/kylarsd",
-      logbookUrl: "https://example.com/logbook/kyla",
+      logbookUrl:
+        "https://docs.google.com/document/d/1Y62IT4f8vnbfXiYgZkfZb85dLvk6tOPL/edit?usp=sharing&ouid=106622004405671835543&rtpof=true&sd=true",
     },
     {
       image: "./Profile/7.png",
@@ -472,7 +482,8 @@ const TimKKN = () => {
       faculty: "Fakultas Adab dan Humaniora",
       major: "Sejarah Peradaban Islam",
       igUrl: "https://instagram.com/naufalanggr__",
-      logbookUrl: "https://example.com/logbook/naufal",
+      logbookUrl:
+        "https://docs.google.com/document/d/1gpJhXUlpv9Q3HGvjwoHKDGe345AxdjH4/edit?usp=sharing&ouid=103285805950881963271&rtpof=true&sd=true",
     },
     {
       image: "./Profile/6.png",
@@ -482,7 +493,8 @@ const TimKKN = () => {
       faculty: "Fakultas Tarbiyah dan Keguruan",
       major: "Pendidikan Kimia",
       igUrl: "https://instagram.com/miaaasalastri",
-      logbookUrl: "https://example.com/logbook/mia",
+      logbookUrl:
+        "https://docs.google.com/document/d/1gD3R4x7Y17pQVt0kCNuaI9dod89NPp6ovnNO5AU4LFA/edit?usp=sharing",
     },
     {
       image: "./Profile/5.png",
@@ -492,7 +504,8 @@ const TimKKN = () => {
       faculty: "Fakultas Adab dan Humaniora",
       major: "Sastra Inggris",
       igUrl: "https://instagram.com/zaleahra",
-      logbookUrl: "https://example.com/logbook/azalea",
+      logbookUrl:
+        "https://docs.google.com/document/d/1wtWiQZ0QD4O2VSWbA9fD88d-0sg_SSfu/edit?usp=sharing&ouid=103285805950881963271&rtpof=true&sd=true",
     },
   ];
 
